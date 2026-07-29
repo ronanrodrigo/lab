@@ -53,5 +53,16 @@
       "offline"
     ],
     "status": "publicado"
+  },
+  {
+    "slug": "safehub",
+    "name": "Safe Hub",
+    "description": "Central de proteção pessoal para registrar, compartilhar localização e pedir ajuda em situações de risco.",
+    "tags": [
+      "segurança",
+      "mobile",
+      "mvp"
+    ],
+    "status": "experimento"
   }
 ]
