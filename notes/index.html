@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Notas, referências e aprendizados sobre tecnologia, IA e desenvolvimento." />
+    <title>Notas — playground</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="back-link" href="../">← playground</a>
+      <span class="site-label">notas pessoais</span>
+    </header>
+
+    <main class="shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">arquivo aberto</p>
+        <h1 id="page-title">Notas para<br /><em>continuar pensando.</em></h1>
+        <p class="intro-copy">Referências, descobertas e ideias guardadas enquanto aprendo e construo.</p>
+      </section>
+
+      <section class="toolbar" aria-label="Filtros das notas">
+        <label class="search" for="search-input">
+          <span aria-hidden="true">⌕</span>
+          <span class="sr-only">Buscar notas</span>
+          <input id="search-input" type="search" placeholder="Buscar notas" autocomplete="off" />
+        </label>
+        <div id="tag-list" class="tag-list" aria-label="Filtrar por tag"></div>
+      </section>
+
+      <div class="content-heading">
+        <p class="eyebrow">coleção</p>
+        <p id="notes-count" class="count"></p>
+      </div>
+      <section id="notes-list" class="notes-list" aria-live="polite"></section>
+    </main>
+
+    <footer class="site-footer shell">
+      <span>Uma coleção em evolução.</span>
+      <a href="https://github.com/ronanrodrigo/notes" target="_blank" rel="noreferrer">fonte no GitHub ↗</a>
+    </footer>
+  </body>
+</html>
