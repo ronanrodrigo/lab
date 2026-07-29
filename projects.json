@@ -1,5 +1,17 @@
 [
   {
+    "slug": "canvllm",
+    "name": "canvllm",
+    "description": "Lean Canvas que se transforma em um prompt pronto para um agente LLM.",
+    "tags": [
+      "web",
+      "mvp",
+      "lean-canvas",
+      "llm"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "fruitin",
     "name": "fruitin",
     "description": "Descubra suas frutas favoritas por gestos e organize suas decisões.",
