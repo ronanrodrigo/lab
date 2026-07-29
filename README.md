@@ -6,9 +6,47 @@ Central dos projetos pessoais de Ronan Rodrigo. Cada experimento web fica em sua
 
 ## Projetos
 
-* [Rir & Brincar](./piadas-infantis/) — uma adivinha infantil por vez, com resposta escondida e novas piadas.
+### [fruitin](./fruitin/)
 
-A listagem da página inicial é atualizada automaticamente durante o build sempre que uma nova pasta contendo `index.html` é adicionada à raiz.
+Descubra suas frutas favoritas por gestos e organize suas decisões.
+
+* **Status:** experimento
+* **Tags:** `web`, `mvp`, `frutas`
+* **Acessar:** [ronanrodrigo.github.io/lab/fruitin](https://ronanrodrigo.github.io/lab/fruitin/)
+
+### [Hello, world!](./hello-world/)
+
+Projeto de teste para validar a atualização automática do lab.
+
+* **Status:** teste
+* **Tags:** `teste`, `html`
+* **Acessar:** [ronanrodrigo.github.io/lab/hello-world](https://ronanrodrigo.github.io/lab/hello-world/)
+
+### [monstergen](./monstergen/)
+
+Gerador de nomes e sabores para imaginar a próxima lata.
+
+* **Status:** experimento
+* **Tags:** `web`, `mvp`, `gerador`, `sabores`
+* **Acessar:** [ronanrodrigo.github.io/lab/monstergen](https://ronanrodrigo.github.io/lab/monstergen/)
+
+### [Notas](./notes/)
+
+Referências, descobertas e aprendizados sobre tecnologia, IA e desenvolvimento.
+
+* **Status:** publicado
+* **Tags:** `markdown`, `ia`, `referências`
+* **Acessar:** [ronanrodrigo.github.io/lab/notes](https://ronanrodrigo.github.io/lab/notes/)
+
+### [Rir & Brincar](./piadas-infantis/)
+
+Uma adivinha infantil por vez, com resposta escondida e novas piadas.
+
+* **Status:** publicado
+* **Tags:** `infantil`, `jogo`, `offline`
+* **Acessar:** [ronanrodrigo.github.io/lab/piadas-infantis](https://ronanrodrigo.github.io/lab/piadas-infantis/)
+
+A listagem da página inicial é atualizada automaticamente durante o build sempre que uma nova pasta contendo `index.html` é adicionada à raiz. O manifesto gerado em [`projects.json`](./projects.json) é a fonte dos metadados exibidos na central.
 
 A página está disponível em:
 
@@ -61,7 +99,11 @@ npm run generate
 ├── projects.json
 ├── scripts/
 ├── .github/workflows/
-└── {nome-do-projeto}/
+├── fruitin/
+├── hello-world/
+├── monstergen/
+├── notes/
+└── piadas-infantis/
 ```
 
 O processo para criar novos projetos está documentado em [`agents.md`](./agents.md).
