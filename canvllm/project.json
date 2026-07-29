@@ -1,0 +1,6 @@
+{
+  "name": "canvllm",
+  "description": "Lean Canvas que se transforma em um prompt pronto para um agente LLM.",
+  "tags": ["web", "mvp", "lean-canvas", "llm"],
+  "status": "experimento"
+}
