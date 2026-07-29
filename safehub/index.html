@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d1726">
+    <meta name="description" content="Safe Hub: uma central de segurança pessoal para cidades grandes e viagens.">
+    <title>Safe Hub — segurança em movimento</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#inicio" aria-label="Safe Hub, início">
+          <span class="brand-mark" aria-hidden="true">+</span>
+          <span><strong>Safe</strong> Hub</span>
+        </a>
+        <div class="topbar-actions">
+          <span class="status-pill"><i></i> Proteção ativa</span>
+          <button class="avatar" type="button" aria-label="Abrir perfil">RR</button>
+        </div>
+      </header>
+
+      <main id="app" tabindex="-1">
+        <section class="view is-active" data-view="dashboard" aria-labelledby="dashboard-title">
+          <div class="welcome-row">
+            <div>
+              <p class="eyebrow">QUARTA-FEIRA, 29 DE JULHO</p>
+              <h1 id="dashboard-title">Olá, Ronan <span aria-hidden="true">👋</span></h1>
+              <p class="lede">Tenha controle quando precisar. Estamos aqui com você.</p>
+            </div>
+            <label class="plan-switch">
+              <span class="sr-only">Plano atual</span>
+              <select id="planSelect" aria-label="Plano atual">
+                <option value="free">Plano gratuito</option>
+                <option value="plus">Safe Hub Plus · demo</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="demo-notice" role="note">
+            <span class="notice-icon">✦</span>
+            <span><strong>Protótipo navegável.</strong> Ações que dependem de SMS, push, streaming e integrações externas estão sinalizadas como simulação.</span>
+          </div>
+
+          <section class="panic-card" aria-labelledby="panic-title">
+            <div class="panic-copy">
+              <span class="live-label"><i></i> DISPONÍVEL AGORA</span>
+              <h2 id="panic-title">Está em uma situação de emergência?</h2>
+              <p>Avise seus contatos de confiança e compartilhe sua localização com um toque.</p>
+              <button class="panic-button" id="panicButton" type="button"><span aria-hidden="true">!</span> Acionar botão do pânico</button>
+              <small class="muted">Widget de hoje disponível no app nativo · simulado neste protótipo</small>
+            </div>
+            <div class="panic-orbit" aria-hidden="true"><span>+</span></div>
+          </section>
+
+          <div class="section-heading"><div><p class="eyebrow">ACESSO RÁPIDO</p><h2>O que você precisa?</h2></div><button class="text-button" data-open-view="media" type="button">Ver tudo <span aria-hidden="true">→</span></button></div>
+          <div class="quick-grid">
+            <button class="quick-card audio-card" data-open-view="media" type="button"><span class="tile-icon">◉</span><span><strong>Gravar áudio</strong><small>Registrar o que acontece</small></span><span class="arrow">↗</span></button>
+            <button class="quick-card location-card" data-open-view="location" type="button"><span class="tile-icon">⌖</span><span><strong>Compartilhar localização</strong><small>Mostre onde você está</small></span><span class="arrow">↗</span></button>
+            <button class="quick-card video-card" data-open-view="media" type="button"><span class="tile-icon">▣</span><span><strong>Gravar vídeo</strong><small>Guarde evidências</small></span><span class="arrow">↗</span></button>
+            <button class="quick-card phone-card" data-open-view="emergency" type="button"><span class="tile-icon">☎</span><span><strong>Telefones úteis</strong><small>Encontre ajuda por perto</small></span><span class="arrow">↗</span></button>
+          </div>
+
+          <section class="trip-card" aria-labelledby="trip-title">
+            <div class="trip-icon">⌁</div><div class="trip-copy"><p class="eyebrow">MODO VIAGEM</p><h2 id="trip-title">Compartilhar uma viagem</h2><p>Ative o acompanhamento e deixe alguém acompanhar seu trajeto.</p></div>
+            <label class="toggle-label"><span class="sr-only">Compartilhar viagem em tempo real</span><input id="tripToggle" type="checkbox"><span class="toggle"></span></label>
+            <div class="trip-status" id="tripStatus">Desativado</div>
+          </section>
+        </section>
+
+        <section class="view" data-view="media" aria-labelledby="media-title" hidden>
+          <div class="page-intro"><button class="back-button" data-open-view="dashboard" type="button">← <span>Início</span></button><p class="eyebrow">REGISTROS</p><h1 id="media-title">Áudio e vídeo</h1><p class="lede">Registre uma situação com discrição e mantenha tudo salvo com você.</p></div>
+          <div class="media-grid">
+            <article class="feature-card recording-card"><div class="card-top"><span class="feature-icon coral">◉</span><span class="tag">GRAVAÇÃO</span></div><h2>Áudio em background</h2><p>Continue registrando mesmo com a tela bloqueada. No plano gratuito, você pode compartilhar o arquivo.</p><div class="recorder"><div class="recorder-time" id="audioTime">00:00</div><div class="wave" id="audioWave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="record-button" id="audioRecord" type="button" aria-label="Iniciar gravação de áudio"><span></span></button><p id="audioLabel">Toque para gravar</p></div><div class="card-actions"><button class="button primary" id="audioShare" type="button" disabled>Compartilhar arquivo</button><button class="button ghost" id="audioTranscribe" type="button">Transcrever <span class="plus-badge">PLUS</span></button></div><p class="inline-note" id="audioNote">O modo background e a transcrição são simulados neste MVP.</p></article>
+            <article class="feature-card recording-card"><div class="card-top"><span class="feature-icon purple">▣</span><span class="tag">CÂMERA</span></div><h2>Gravação de vídeo</h2><p>Capture o que está acontecendo. Proteja o arquivo com uma senha antes de compartilhar.</p><div class="video-stage"><video id="videoPreview" autoplay muted playsinline aria-label="Prévia da câmera"></video><div class="video-placeholder" id="videoPlaceholder"><span>▣</span><small>A câmera só será ativada quando você tocar em gravar.</small></div><span class="recording-indicator" id="videoIndicator" hidden><i></i> REC</span></div><div class="video-controls"><button class="button primary" id="videoRecord" type="button">Iniciar câmera</button><button class="button ghost" id="videoSave" type="button" disabled>Salvar com senha</button></div><p class="inline-note" id="videoNote">Câmera e gravação usam recursos do navegador; se o acesso for negado, um registro mockado será criado.</p></article>
+          </div>
+          <div class="upgrade-banner"><span class="sparkle">✦</span><div><strong>Mais proteção com o Safe Hub Plus</strong><p>Transcrição, live stream e compartilhamento de vídeo em tempo real para seus contatos.</p></div><button class="button light" id="upgradeButton" type="button">Conhecer o Plus</button></div>
+        </section>
+
+        <section class="view" data-view="location" aria-labelledby="location-title" hidden>
+          <div class="page-intro"><button class="back-button" data-open-view="dashboard" type="button">← <span>Início</span></button><p class="eyebrow">LOCALIZAÇÃO</p><h1 id="location-title">Onde você está?</h1><p class="lede">Compartilhe seu trajeto com quem precisa saber que você está bem.</p></div>
+          <div class="location-layout"><div class="map-card"><div class="map-grid" aria-hidden="true"></div><div class="map-road road-one"></div><div class="map-road road-two"></div><div class="map-road road-three"></div><div class="map-pin user-pin"><span></span></div><div class="map-label user-label">Você está aqui</div><div class="map-place place-a">Pinheiros</div><div class="map-place place-b">Vila Madalena</div><div class="map-footer"><span>⌖ <strong id="locationText">Localização aproximada</strong></span><button class="text-button" id="refreshLocation" type="button">Atualizar</button></div></div><aside class="location-panel"><div class="panel-header"><span class="feature-icon green">⌖</span><div><h2>Compartilhamento ao vivo</h2><p>Seus contatos recebem um link temporário.</p></div></div><label class="big-toggle"><input id="locationToggle" type="checkbox"><span class="toggle"></span><strong id="locationToggleLabel">Compartilhar localização</strong></label><div class="share-duration"><label for="duration">Compartilhar por</label><select id="duration"><option>30 minutos</option><option>1 hora</option><option>Até eu desligar</option></select></div><button class="button primary full" id="locationShare" type="button">Compartilhar agora</button><div class="plus-feature"><span>✦</span><div><strong>Checkpoints automáticos</strong><p>Receba alertas ao chegar ou sair de locais salvos.</p></div><span class="plus-badge">PLUS</span></div><button class="button ghost full" id="uberButton" type="button">Vincular viagem Uber <span class="plus-badge">MOCK</span></button></aside></div>
+        </section>
+
+        <section class="view" data-view="community" aria-labelledby="community-title" hidden>
+          <div class="page-intro"><button class="back-button" data-open-view="dashboard" type="button">← <span>Início</span></button><p class="eyebrow">COMUNIDADE</p><h1 id="community-title">Fique atento ao redor</h1><p class="lede">Avisos compartilhados por pessoas próximas ajudam todo mundo a se movimentar melhor.</p></div>
+          <div class="community-head"><div><h2>Ambientes inseguros</h2><p><span class="green-dot"></span> Atualizado há poucos minutos · São Paulo</p></div><button class="button primary" id="reportButton" type="button">+ Reportar local</button></div><div class="warning-list" id="warningList"></div><div class="empty-state" id="warningEmpty" hidden><span>⌖</span><h3>Nenhum aviso encontrado</h3><p>Tente mudar o filtro ou seja a primeira pessoa a reportar.</p></div>
+        </section>
+
+        <section class="view" data-view="emergency" aria-labelledby="emergency-title" hidden>
+          <div class="page-intro"><button class="back-button" data-open-view="dashboard" type="button">← <span>Início</span></button><p class="eyebrow">AJUDA IMEDIATA</p><h1 id="emergency-title">Telefones úteis</h1><p class="lede">Números essenciais de emergência no Brasil, organizados para acesso rápido.</p></div>
+          <div class="emergency-toolbar"><label class="search-box"><span aria-hidden="true">⌕</span><input id="phoneSearch" type="search" placeholder="Buscar serviço ou região" aria-label="Buscar serviço ou região"></label><select id="regionFilter" aria-label="Filtrar por região"><option value="all">Todas as regiões</option><option value="nacional">Nacional</option><option value="sudeste">Sudeste</option><option value="sul">Sul</option><option value="nordeste">Nordeste</option><option value="centro-oeste">Centro-Oeste</option><option value="norte">Norte</option></select></div><div class="phone-grid" id="phoneGrid"></div><div class="contacts-card"><div><p class="eyebrow">CONTATOS DE CONFIANÇA</p><h2>Quem será avisado?</h2><p>O botão do pânico avisa contatos com o app e envia SMS para os demais.</p></div><form id="contactForm" class="contact-form"><input id="contactName" required placeholder="Nome do contato" aria-label="Nome do contato"><input id="contactPhone" required inputmode="tel" placeholder="Telefone" aria-label="Telefone"><button class="button primary" type="submit">Adicionar</button></form><div class="contact-chips" id="contactChips"></div></div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Navegação principal"><button class="nav-item is-active" data-open-view="dashboard" type="button"><span>⌂</span>Início</button><button class="nav-item" data-open-view="location" type="button"><span>⌖</span>Localização</button><button class="nav-item panic-nav" id="navPanic" type="button"><span>!</span>Pânico</button><button class="nav-item" data-open-view="community" type="button"><span>◌</span>Comunidade</button><button class="nav-item" data-open-view="emergency" type="button"><span>☎</span>Ajuda</button></nav>
+    </div>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" type="button" aria-label="Fechar">×</button><div id="modalContent"></div></section></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
