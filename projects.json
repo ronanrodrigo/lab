@@ -1,5 +1,17 @@
 [
   {
+    "slug": "bcanv",
+    "name": "bcanv",
+    "description": "Business Model Canvas mobile first para visualizar como um negócio cria e captura valor.",
+    "tags": [
+      "web",
+      "mvp",
+      "business-model",
+      "canvas"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "canvllm",
     "name": "canvllm",
     "description": "Lean Canvas que se transforma em um prompt pronto para um agente LLM.",
