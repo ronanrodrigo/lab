@@ -1,5 +1,15 @@
 [
   {
+    "slug": "hello-world",
+    "name": "Hello, world!",
+    "description": "Projeto de teste para validar a atualização automática do playground.",
+    "tags": [
+      "teste",
+      "html"
+    ],
+    "status": "teste"
+  },
+  {
     "slug": "monstergen",
     "name": "monstergen",
     "description": "Gerador de nomes e sabores para imaginar a próxima lata.",
