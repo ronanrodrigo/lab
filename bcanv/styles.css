@@ -32,10 +32,12 @@ button:focus-visible, textarea:focus-visible { outline: 3px solid rgba(12, 91, 7
 .button:hover { transform: translateY(-1px); }
 .button-light { color: var(--green); background: var(--white); border: 1px solid var(--line); }
 .button-light:hover { background: var(--mint); }
+.button-primary { color: var(--white); background: var(--green); box-shadow: 0 8px 17px rgba(12, 91, 77, .2); }
+.button-primary:hover { background: var(--green-dark); }
 
 main { overflow: hidden; }
 .intro { max-width: 1120px; margin: 0 auto; padding: 54px 20px 49px; }
-.eyebrow, .section-kicker { color: var(--green); font-size: 10px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+.eyebrow, .section-kicker, .prompt-kicker { color: var(--green); font-size: 10px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
 .eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 22px; }
 .eyebrow span { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(12, 91, 77, .12); }
 h1 { max-width: 720px; margin: 0; color: var(--green-dark); font-size: clamp(43px, 13vw, 76px); line-height: .94; letter-spacing: -.075em; }
@@ -44,8 +46,8 @@ h1 strong { color: var(--green); font-weight: 850; }
 .intro-meta { display: flex; align-items: center; gap: 13px; margin-top: 28px; color: var(--muted); font-size: 11px; }
 .step-label { color: var(--green); font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
 
-.canvas-area, .review, .closing-note { max-width: 1120px; margin: 0 auto; padding: 0 20px 64px; }
-.section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+.canvas-area, .review, .prompt-section, .closing-note { max-width: 1120px; margin: 0 auto; padding: 0 20px 64px; }
+.section-head, .prompt-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
 h2 { margin: 7px 0 0; font-size: 26px; letter-spacing: -.06em; }
 .completion { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; color: var(--green); font-size: 12px; }
 .completion strong { font-size: 13px; }
@@ -81,6 +83,18 @@ h2 { margin: 7px 0 0; font-size: 26px; letter-spacing: -.06em; }
 .review-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 17px; }
 .review-list span { padding: 5px 8px; color: var(--mint); border: 1px solid rgba(205, 238, 226, .23); border-radius: 100px; font-size: 10px; }
 
+.prompt-heading { align-items: end; }
+.prompt-heading p { max-width: 350px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; text-align: right; }
+.prompt-card { padding: 22px 19px 18px; color: var(--white); background: var(--green-dark); border-radius: 12px; box-shadow: var(--shadow); }
+.prompt-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.prompt-card h3 { margin-top: 8px; font-size: 19px; letter-spacing: -.04em; }
+.prompt-kicker { color: var(--lime); }
+.prompt-state { padding: 5px 8px; color: var(--mint); border: 1px solid rgba(205, 238, 226, .25); border-radius: 100px; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.prompt-output { min-height: 250px; max-height: 480px; overflow: auto; margin: 20px 0 18px; padding: 15px; white-space: pre-wrap; color: #d5e4df; background: #0d4a40; border: 1px solid rgba(205, 238, 226, .15); border-radius: 8px; font-family: "SFMono-Regular", Consolas, monospace; font-size: 12px; line-height: 1.6; }
+.prompt-output.is-empty { color: #a1bab3; font-family: inherit; font-style: italic; }
+.prompt-actions { display: flex; align-items: center; gap: 13px; }
+.copy-feedback { color: var(--lime); font-size: 12px; }
+
 .closing-note { display: flex; align-items: center; gap: 16px; padding-bottom: 58px; }
 .closing-line { width: 38px; height: 2px; flex: 0 0 auto; background: var(--green); }
 .closing-note p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
@@ -94,7 +108,7 @@ h2 { margin: 7px 0 0; font-size: 26px; letter-spacing: -.06em; }
   .button { padding: 10px 13px; font-size: 12px; }
   .save-status { display: inline; margin-right: 4px; }
   .intro { padding: 72px 28px 65px; }
-  .canvas-area, .review, .closing-note { padding-right: 28px; padding-left: 28px; }
+  .canvas-area, .review, .prompt-section, .closing-note { padding-right: 28px; padding-left: 28px; }
   .canvas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .review { grid-template-columns: .8fr 1.2fr; align-items: center; }
   .footer { padding-right: 28px; padding-left: 28px; }
@@ -116,4 +130,7 @@ h2 { margin: 7px 0 0; font-size: 26px; letter-spacing: -.06em; }
 
 @media (max-width: 620px) {
   .canvas-block textarea { font-size: 16px; }
+  .prompt-heading { align-items: start; flex-direction: column; }
+  .prompt-heading p { text-align: left; }
+  .prompt-actions { align-items: flex-start; flex-direction: column; }
 }

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c5b4d">
-  <meta name="description" content="Monte seu Business Model Canvas de forma simples, visual e mobile first.">
+  <meta name="description" content="Monte seu Business Model Canvas e gere um prompt pronto para usar em uma LLM.">
   <title>bcanv — Business Model Canvas</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -45,98 +45,33 @@
       </div>
 
       <div class="canvas-grid">
-        <article class="canvas-block partners" data-block="partners">
-          <div class="block-top"><span class="block-number">01</span><span class="block-icon">↔</span></div>
-          <h3>Parcerias-chave</h3>
-          <p>Quem ajuda seu negócio a acontecer?</p>
-          <textarea data-block-input="partners" placeholder="Ex.: fornecedores, parceiros de distribuição" aria-label="Parcerias-chave, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="partners">0 ideias</span>
-        </article>
-
-        <article class="canvas-block activities" data-block="activities">
-          <div class="block-top"><span class="block-number">02</span><span class="block-icon">✦</span></div>
-          <h3>Atividades-chave</h3>
-          <p>O que precisa ser feito para entregar valor?</p>
-          <textarea data-block-input="activities" placeholder="Ex.: desenvolver, vender, atender" aria-label="Atividades-chave, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="activities">0 ideias</span>
-        </article>
-
-        <article class="canvas-block resources" data-block="resources">
-          <div class="block-top"><span class="block-number">03</span><span class="block-icon">▦</span></div>
-          <h3>Recursos-chave</h3>
-          <p>Quais recursos são indispensáveis?</p>
-          <textarea data-block-input="resources" placeholder="Ex.: equipe, tecnologia, espaço físico" aria-label="Recursos-chave, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="resources">0 ideias</span>
-        </article>
-
-        <article class="canvas-block value" data-block="value">
-          <div class="block-top"><span class="block-number">04</span><span class="block-icon">◆</span></div>
-          <h3>Proposta de valor</h3>
-          <p>Que valor você entrega e qual problema resolve?</p>
-          <textarea data-block-input="value" placeholder="Ex.: praticidade para transformar uma ideia em ação" aria-label="Proposta de valor, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="value">0 ideias</span>
-        </article>
-
-        <article class="canvas-block relationships" data-block="relationships">
-          <div class="block-top"><span class="block-number">05</span><span class="block-icon">♡</span></div>
-          <h3>Relacionamento</h3>
-          <p>Como você conquista e cuida dos clientes?</p>
-          <textarea data-block-input="relationships" placeholder="Ex.: comunidade, suporte pessoal, autoatendimento" aria-label="Relacionamento com clientes, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="relationships">0 ideias</span>
-        </article>
-
-        <article class="canvas-block channels" data-block="channels">
-          <div class="block-top"><span class="block-number">06</span><span class="block-icon">↗</span></div>
-          <h3>Canais</h3>
-          <p>Como o produto chega ao cliente?</p>
-          <textarea data-block-input="channels" placeholder="Ex.: loja, Instagram, indicação, site" aria-label="Canais, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="channels">0 ideias</span>
-        </article>
-
-        <article class="canvas-block segments" data-block="segments">
-          <div class="block-top"><span class="block-number">07</span><span class="block-icon">◎</span></div>
-          <h3>Segmentos de clientes</h3>
-          <p>Para quem você cria valor?</p>
-          <textarea data-block-input="segments" placeholder="Ex.: estudantes, pequenos negócios, famílias" aria-label="Segmentos de clientes, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="segments">0 ideias</span>
-        </article>
-
-        <article class="canvas-block costs" data-block="costs">
-          <div class="block-top"><span class="block-number">08</span><span class="block-icon">−</span></div>
-          <h3>Estrutura de custos</h3>
-          <p>Quais custos mantêm o modelo funcionando?</p>
-          <textarea data-block-input="costs" placeholder="Ex.: equipe, ferramentas, aluguel, marketing" aria-label="Estrutura de custos, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="costs">0 ideias</span>
-        </article>
-
-        <article class="canvas-block revenue" data-block="revenue">
-          <div class="block-top"><span class="block-number">09</span><span class="block-icon">＋</span></div>
-          <h3>Fontes de receita</h3>
-          <p>Como o negócio ganha dinheiro?</p>
-          <textarea data-block-input="revenue" placeholder="Ex.: venda direta, assinatura, comissão" aria-label="Fontes de receita, uma ideia por linha"></textarea>
-          <span class="note-count" data-count="revenue">0 ideias</span>
-        </article>
+        <article class="canvas-block partners" data-block="partners"><div class="block-top"><span class="block-number">01</span><span class="block-icon">↔</span></div><h3>Parcerias-chave</h3><p>Quem ajuda seu negócio a acontecer?</p><textarea data-block-input="partners" placeholder="Ex.: fornecedores, parceiros de distribuição" aria-label="Parcerias-chave, uma ideia por linha"></textarea><span class="note-count" data-count="partners">0 ideias</span></article>
+        <article class="canvas-block activities" data-block="activities"><div class="block-top"><span class="block-number">02</span><span class="block-icon">✦</span></div><h3>Atividades-chave</h3><p>O que precisa ser feito para entregar valor?</p><textarea data-block-input="activities" placeholder="Ex.: desenvolver, vender, atender" aria-label="Atividades-chave, uma ideia por linha"></textarea><span class="note-count" data-count="activities">0 ideias</span></article>
+        <article class="canvas-block resources" data-block="resources"><div class="block-top"><span class="block-number">03</span><span class="block-icon">▦</span></div><h3>Recursos-chave</h3><p>Quais recursos são indispensáveis?</p><textarea data-block-input="resources" placeholder="Ex.: equipe, tecnologia, espaço físico" aria-label="Recursos-chave, uma ideia por linha"></textarea><span class="note-count" data-count="resources">0 ideias</span></article>
+        <article class="canvas-block value" data-block="value"><div class="block-top"><span class="block-number">04</span><span class="block-icon">◆</span></div><h3>Proposta de valor</h3><p>Que valor você entrega e qual problema resolve?</p><textarea data-block-input="value" placeholder="Ex.: praticidade para transformar uma ideia em ação" aria-label="Proposta de valor, uma ideia por linha"></textarea><span class="note-count" data-count="value">0 ideias</span></article>
+        <article class="canvas-block relationships" data-block="relationships"><div class="block-top"><span class="block-number">05</span><span class="block-icon">♡</span></div><h3>Relacionamento</h3><p>Como você conquista e cuida dos clientes?</p><textarea data-block-input="relationships" placeholder="Ex.: comunidade, suporte pessoal, autoatendimento" aria-label="Relacionamento com clientes, uma ideia por linha"></textarea><span class="note-count" data-count="relationships">0 ideias</span></article>
+        <article class="canvas-block channels" data-block="channels"><div class="block-top"><span class="block-number">06</span><span class="block-icon">↗</span></div><h3>Canais</h3><p>Como o produto chega ao cliente?</p><textarea data-block-input="channels" placeholder="Ex.: loja, Instagram, indicação, site" aria-label="Canais, uma ideia por linha"></textarea><span class="note-count" data-count="channels">0 ideias</span></article>
+        <article class="canvas-block segments" data-block="segments"><div class="block-top"><span class="block-number">07</span><span class="block-icon">◎</span></div><h3>Segmentos de clientes</h3><p>Para quem você cria valor?</p><textarea data-block-input="segments" placeholder="Ex.: estudantes, pequenos negócios, famílias" aria-label="Segmentos de clientes, uma ideia por linha"></textarea><span class="note-count" data-count="segments">0 ideias</span></article>
+        <article class="canvas-block costs" data-block="costs"><div class="block-top"><span class="block-number">08</span><span class="block-icon">−</span></div><h3>Estrutura de custos</h3><p>Quais custos mantêm o modelo funcionando?</p><textarea data-block-input="costs" placeholder="Ex.: equipe, ferramentas, aluguel, marketing" aria-label="Estrutura de custos, uma ideia por linha"></textarea><span class="note-count" data-count="costs">0 ideias</span></article>
+        <article class="canvas-block revenue" data-block="revenue"><div class="block-top"><span class="block-number">09</span><span class="block-icon">＋</span></div><h3>Fontes de receita</h3><p>Como o negócio ganha dinheiro?</p><textarea data-block-input="revenue" placeholder="Ex.: venda direta, assinatura, comissão" aria-label="Fontes de receita, uma ideia por linha"></textarea><span class="note-count" data-count="revenue">0 ideias</span></article>
       </div>
     </section>
 
     <section class="review" aria-labelledby="reviewTitle">
-      <div class="review-copy">
-        <span class="section-kicker">passo 02</span>
-        <h2 id="reviewTitle">Olhe o todo.</h2>
-        <p>Um modelo forte conecta os blocos. Use esta revisão rápida para encontrar o que ainda precisa de uma resposta.</p>
-      </div>
-      <div class="review-card" id="reviewCard" aria-live="polite">
-        <div class="review-status"><span id="reviewDot"></span><strong id="reviewTitleText">Seu canvas está esperando</strong></div>
-        <p id="reviewText">Comece pela proposta de valor ou pelo segmento de clientes. Não precisa preencher tudo de uma vez.</p>
-        <div class="review-list" id="reviewList"></div>
+      <div class="review-copy"><span class="section-kicker">passo 02</span><h2 id="reviewTitle">Olhe o todo.</h2><p>Um modelo forte conecta os blocos. Use esta revisão rápida para encontrar o que ainda precisa de uma resposta.</p></div>
+      <div class="review-card" id="reviewCard" aria-live="polite"><div class="review-status"><span id="reviewDot"></span><strong id="reviewTitleText">Seu canvas está esperando</strong></div><p id="reviewText">Comece pela proposta de valor ou pelo segmento de clientes. Não precisa preencher tudo de uma vez.</p><div class="review-list" id="reviewList"></div></div>
+    </section>
+
+    <section class="prompt-section" aria-labelledby="promptTitle">
+      <div class="prompt-heading"><div><span class="section-kicker">passo 03</span><h2 id="promptTitle">Leve seu modelo para uma LLM.</h2></div><p>Transforme o canvas em um briefing estruturado para analisar, testar ou desenvolver sua ideia.</p></div>
+      <div class="prompt-card">
+        <div class="prompt-card-top"><div><span class="prompt-kicker">prompt gerado</span><h3>Seu prompt de negócio</h3></div><span class="prompt-state" id="promptState">rascunho</span></div>
+        <pre class="prompt-output" id="promptOutput" aria-live="polite"></pre>
+        <div class="prompt-actions"><button class="button button-primary" id="copyPromptButton" type="button">↗&nbsp; Copiar prompt</button><span class="copy-feedback" id="copyFeedback" role="status"></span></div>
       </div>
     </section>
 
-    <section class="closing-note" aria-label="Próximo passo">
-      <span class="closing-line"></span>
-      <p><strong>Modelos de negócio evoluem.</strong><br>Use o quadro como uma conversa, não como uma resposta definitiva.</p>
-      <span class="closing-mark">b·</span>
-    </section>
+    <section class="closing-note" aria-label="Próximo passo"><span class="closing-line"></span><p><strong>Modelos de negócio evoluem.</strong><br>Use o quadro como uma conversa, não como uma resposta definitiva.</p><span class="closing-mark">b·</span></section>
   </main>
 
   <footer class="footer"><span>bcanv</span><span>visualize. conecte. evolua.</span></footer>

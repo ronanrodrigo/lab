@@ -1,11 +1,11 @@
-const STORAGE_KEY = 'bcanv-draft-v1';
+const STORAGE_KEY = 'bcanv-draft-v2';
 
 const blockLabels = {
   partners: 'Parcerias-chave',
   activities: 'Atividades-chave',
   resources: 'Recursos-chave',
   value: 'Proposta de valor',
-  relationships: 'Relacionamento',
+  relationships: 'Relacionamento com clientes',
   channels: 'Canais',
   segments: 'Segmentos de clientes',
   costs: 'Estrutura de custos',
@@ -32,7 +32,10 @@ const reviewDot = document.querySelector('#reviewDot');
 const reviewTitle = document.querySelector('#reviewTitleText');
 const reviewText = document.querySelector('#reviewText');
 const reviewList = document.querySelector('#reviewList');
-const copy = (state) => JSON.parse(JSON.stringify(state));
+const promptOutput = document.querySelector('#promptOutput');
+const promptState = document.querySelector('#promptState');
+const copyFeedback = document.querySelector('#copyFeedback');
+const clone = (state) => JSON.parse(JSON.stringify(state));
 
 function readState() {
   return Object.fromEntries(fields.map((field) => [field.dataset.blockInput, field.value.trim()]));
@@ -78,6 +81,38 @@ function updateReview(state, filled) {
   }
 }
 
+function buildPrompt(state) {
+  const filled = Object.entries(state).filter(([, value]) => value);
+  const canvas = filled.length
+    ? filled.map(([key, value]) => `### ${blockLabels[key]}\n${value}`).join('\n\n')
+    : 'O canvas ainda está vazio. Faça perguntas para começar pela proposta de valor e pelos segmentos de clientes.';
+
+  return [
+    'Atue como um consultor de modelos de negócio e validação de ideias.',
+    '',
+    'Quero analisar o Business Model Canvas abaixo. Trate as informações como hipóteses, identifique incoerências e não invente dados que não foram fornecidos.',
+    '',
+    '## Meu Business Model Canvas',
+    canvas,
+    '',
+    '## Sua tarefa',
+    '1. Resuma o modelo de negócio em até cinco linhas.',
+    '2. Explique como a proposta de valor se conecta aos segmentos, canais, relacionamento e receitas.',
+    '3. Aponte as três hipóteses mais arriscadas ou frágeis.',
+    '4. Liste as informações ausentes que impedem uma análise melhor.',
+    '5. Sugira até cinco experimentos simples e baratos para validar essas hipóteses com clientes reais.',
+    '6. Recomende os próximos passos, priorizados por impacto e esforço.',
+    '',
+    'Responda em português do Brasil, com linguagem clara, prática e objetiva. Separe fatos informados, hipóteses e recomendações.'
+  ].join('\n');
+}
+
+function updatePrompt(state, filled) {
+  promptOutput.textContent = buildPrompt(state);
+  promptOutput.classList.toggle('is-empty', filled === 0);
+  promptState.textContent = filled ? 'pronto para copiar' : 'rascunho';
+}
+
 function update() {
   const state = readState();
   const filled = Object.values(state).filter(Boolean).length;
@@ -87,6 +122,7 @@ function update() {
   saveStatus.textContent = filled ? 'salvo neste navegador' : 'canvas vazio';
   fields.forEach((field) => updateCount(field.dataset.blockInput, field.value));
   updateReview(state, filled);
+  updatePrompt(state, filled);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
@@ -102,7 +138,7 @@ function restore() {
 }
 
 document.querySelector('#exampleButton').addEventListener('click', () => {
-  applyState(copy(exampleState));
+  applyState(clone(exampleState));
   update();
   saveStatus.textContent = 'exemplo carregado';
   document.querySelector('[data-block-input="value"]').focus();
@@ -111,8 +147,19 @@ document.querySelector('#exampleButton').addEventListener('click', () => {
 document.querySelector('#clearButton').addEventListener('click', () => {
   applyState({});
   localStorage.removeItem(STORAGE_KEY);
+  copyFeedback.textContent = '';
   update();
   fields[0].focus();
+});
+
+document.querySelector('#copyPromptButton').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(promptOutput.textContent);
+    copyFeedback.textContent = 'Prompt copiado.';
+  } catch (error) {
+    copyFeedback.textContent = 'Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.';
+  }
+  window.setTimeout(() => { copyFeedback.textContent = ''; }, 3500);
 });
 
 fields.forEach((field) => field.addEventListener('input', update));
