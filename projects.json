@@ -33,6 +33,17 @@
     "status": "experimento"
   },
   {
+    "slug": "notes",
+    "name": "Notas",
+    "description": "Referências, descobertas e aprendizados sobre tecnologia, IA e desenvolvimento.",
+    "tags": [
+      "markdown",
+      "ia",
+      "referências"
+    ],
+    "status": "publicado"
+  },
+  {
     "slug": "piadas-infantis",
     "name": "Rir & Brincar",
     "description": "Uma adivinha infantil por vez, com resposta escondida e novas piadas.",
