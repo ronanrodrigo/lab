@@ -1,5 +1,16 @@
 [
   {
+    "slug": "fruitin",
+    "name": "fruitin",
+    "description": "Descubra suas frutas favoritas por gestos e organize suas decisões.",
+    "tags": [
+      "web",
+      "mvp",
+      "frutas"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "hello-world",
     "name": "Hello, world!",
     "description": "Projeto de teste para validar a atualização automática do playground.",
