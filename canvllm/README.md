@@ -14,20 +14,23 @@ Jovens adultos explorando uma ideia de negócio, projeto paralelo, produto digit
 
 ## Fluxo principal
 
-1. Preencher os nove blocos do Lean Canvas, sem precisar completar tudo de uma vez.
-2. Configurar o papel, objetivo, tom, formato e uma regra adicional para o agente.
-3. Acompanhar o prompt sendo atualizado em tempo real.
-4. Copiar o prompt e colá-lo no agente LLM escolhido.
+1. Explorar o canvas já preenchido com uma ideia de exemplo.
+2. Editar ou substituir os dados dos nove blocos do Lean Canvas.
+3. Configurar o papel, objetivo, tom, formato e uma regra adicional para o agente.
+4. Acompanhar o prompt sendo atualizado em tempo real.
+5. Copiar o prompt e colá-lo no agente LLM escolhido.
+6. Usar `Limpar tudo` para começar um canvas vazio.
 
 ## Funcionalidades implementadas
 
 * Lean Canvas com os nove blocos essenciais.
+* Exemplo inicial completo sobre validação de ideias para jovens adultos.
 * Indicador de progresso dos blocos preenchidos.
 * Configuração do agente com objetivo, tom, formato e regra adicional.
 * Geração de prompt em tempo real, incluindo somente os dados preenchidos e instruções de validação.
 * Cópia do prompt para a área de transferência, com feedback visual.
 * Salvamento automático do rascunho no `localStorage` do navegador.
-* Limpeza completa do rascunho.
+* Limpeza completa do rascunho para iniciar uma ideia do zero.
 * Layout responsivo para telas pequenas e grandes.
 * Estados de rascunho vazio e em construção.
 
@@ -60,11 +63,13 @@ A listagem da página central é gerada automaticamente a partir das pastas que 
 * HTML, CSS e JavaScript vanilla foram suficientes para o fluxo e evitam dependências desnecessárias.
 * Todo o código específico está dentro de `canvllm/` e os caminhos de recursos são relativos ao projeto.
 * O prompt é derivado em memória a cada alteração e o estado do formulário é persistido localmente para evitar perda acidental do rascunho.
+* A primeira visita carrega um exemplo completo; a chave de armazenamento foi versionada para que a atualização apareça também para quem já havia acessado a versão anterior.
+* O botão `Limpar tudo` remove o exemplo e deixa o canvas vazio.
 * A cópia usa a Clipboard API e apresenta uma mensagem alternativa caso o navegador bloqueie o acesso à área de transferência.
 
 ## Dados e limitações
 
-Não há API, backend, autenticação ou carga inicial de dados. O usuário começa com um canvas vazio; os placeholders são apenas orientações e não são incluídos no prompt. Os dados digitados ficam somente no `localStorage` do navegador atual.
+Não há API, backend ou autenticação. Os dados iniciais são simulados e servem apenas para demonstrar o fluxo: a ideia de exemplo é um produto que ajuda jovens adultos a validar ideias. Os dados digitados posteriormente ficam somente no `localStorage` do navegador atual.
 
 O MVP não avalia a qualidade da ideia, não conversa com um modelo LLM e não sincroniza o canvas entre dispositivos. A qualidade da resposta dependerá do agente em que o prompt for utilizado.
 
@@ -84,4 +89,5 @@ Para este MVP, foi aproveitada a ênfase em agentes de IA e ferramentas: o produ
 * Comparar o tempo até a primeira hipótese clara com e sem o canvllm.
 * Testar se o prompt copiado gera conversas mais úteis em diferentes agentes LLM.
 * Entrevistar usuários sobre quais blocos parecem difíceis ou pouco relevantes.
-* Avaliar a necessidade de templates opcionais somente depois de observar o uso do canvas vazio.
+* Avaliar se o exemplo inicial ajuda a entender o produto ou cria ancoragem excessiva.
+* Avaliar a necessidade de templates opcionais depois de observar o uso do canvas vazio.

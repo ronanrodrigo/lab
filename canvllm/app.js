@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'canvllm-draft-v1';
+const STORAGE_KEY = 'canvllm-draft-v2';
 
 const canvasLabels = {
   problem: 'Problema',
@@ -18,6 +18,27 @@ const settingLabels = {
   tone: 'Tom de voz',
   format: 'Formato das respostas',
   constraint: 'Regra extra'
+};
+
+const exampleState = {
+  canvas: {
+    problem: 'Jovens adultos têm boas ideias de produtos, mas não sabem transformar uma intuição em uma hipótese clara e em um primeiro teste barato.',
+    segments: 'Jovens adultos entre 18 e 30 anos que querem criar um negócio, produto digital ou projeto paralelo sem experiência em validação.',
+    value: 'Transforme uma ideia solta em um plano de validação claro e em um prompt pronto para conversar com um agente de IA.',
+    solution: 'Um Lean Canvas guiado que organiza hipóteses e gera um prompt de agente LLM atualizado a cada resposta.',
+    channels: 'TikTok e Instagram sobre carreira e empreendedorismo, comunidades de tecnologia, universidades, coworkings e indicação entre amigos.',
+    revenue: 'Plano gratuito para um canvas e assinatura acessível para múltiplos projetos, histórico e templates avançados.',
+    costs: 'Hospedagem estática, evolução do produto, ferramentas de IA para pesquisa e aquisição de usuários em comunidades.',
+    metrics: 'Canvas concluídos, prompts copiados, retorno de usuários em 7 dias e quantidade de hipóteses testadas.',
+    advantage: 'Uma experiência simples e em português que conecta o framework Lean Canvas diretamente ao próximo prompt de validação.'
+  },
+  settings: {
+    agentName: 'Mentor de validação',
+    objective: 'me ajudar a descobrir se esta ideia resolve um problema real antes de investir tempo e dinheiro em desenvolvimento',
+    tone: 'direto e pragmático',
+    format: 'passos práticos',
+    constraint: 'questione minhas premissas com respeito e sempre sugira o menor experimento possível para obter evidências'
+  }
 };
 
 const fields = [...document.querySelectorAll('[data-canvas], [data-setting]')];
@@ -42,7 +63,7 @@ function applyState(state) {
   fields.forEach((field) => {
     const group = field.dataset.canvas ? 'canvas' : 'settings';
     const key = field.dataset.canvas || field.dataset.setting;
-    if (state?.[group]?.[key]) field.value = state[group][key];
+    field.value = state?.[group]?.[key] || '';
   });
 }
 
@@ -96,9 +117,10 @@ function update() {
 function restore() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (saved) applyState(saved);
+    applyState(saved || exampleState);
   } catch (error) {
     localStorage.removeItem(STORAGE_KEY);
+    applyState(exampleState);
   }
   update();
 }
