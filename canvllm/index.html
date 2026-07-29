@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101828">
+  <meta name="description" content="Monte seu Lean Canvas e transforme a ideia em um prompt pronto para um agente LLM.">
+  <title>canvllm — do canvas ao agente</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="canvllm, início">
+      <span class="brand-mark">c<span>·</span></span>
+      <span>canvllm</span>
+    </a>
+    <div class="topbar-actions">
+      <span class="save-status" id="saveStatus" role="status">rascunho vazio</span>
+      <button class="button button-ghost" id="clearButton" type="button">Limpar tudo</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> laboratório de ideias</div>
+      <div class="hero-grid">
+        <div>
+          <h1 id="pageTitle">Dê forma à ideia.<br><em>Converse com um agente.</em></h1>
+          <p class="hero-copy">Preencha o Lean Canvas no seu ritmo. O canvllm organiza suas hipóteses e transforma cada detalhe em um prompt claro, pronto para copiar.</p>
+        </div>
+        <div class="hero-note">
+          <span class="note-number">01</span>
+          <p>Você não precisa ter todas as respostas. Comece pelo problema e deixe o canvas mostrar o que falta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Construtor de Lean Canvas">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">passo 01</span>
+          <h2>Seu Lean Canvas</h2>
+        </div>
+        <div class="progress-wrap" aria-label="Progresso do canvas">
+          <span id="progressLabel">0 de 9 blocos</span>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+      </div>
+
+      <div class="canvas-grid" id="canvasGrid">
+        <article class="canvas-card card-problem">
+          <div class="card-heading"><span class="card-index">01</span><h3>Problema</h3></div>
+          <p class="card-hint">Quais dores ou tarefas ainda não são bem resolvidas?</p>
+          <textarea data-canvas="problem" placeholder="Ex.: pessoas jovens têm ideias, mas não sabem como transformá-las em um primeiro teste..." aria-label="Problema"></textarea>
+        </article>
+        <article class="canvas-card card-segments">
+          <div class="card-heading"><span class="card-index">02</span><h3>Segmentos de clientes</h3></div>
+          <p class="card-hint">Quem sente esse problema com mais intensidade?</p>
+          <textarea data-canvas="segments" placeholder="Ex.: jovens adultos criando o primeiro negócio ou projeto paralelo..." aria-label="Segmentos de clientes"></textarea>
+        </article>
+        <article class="canvas-card card-value">
+          <div class="card-heading"><span class="card-index">03</span><h3>Proposta de valor única</h3></div>
+          <p class="card-hint">Por que alguém escolheria sua solução?</p>
+          <textarea data-canvas="value" placeholder="Ex.: clareza para sair da ideia e chegar ao próximo passo em minutos..." aria-label="Proposta de valor única"></textarea>
+        </article>
+        <article class="canvas-card card-solution">
+          <div class="card-heading"><span class="card-index">04</span><h3>Solução</h3></div>
+          <p class="card-hint">Qual é a menor solução possível para testar a hipótese?</p>
+          <textarea data-canvas="solution" placeholder="Ex.: um canvas guiado que gera um prompt de validação..." aria-label="Solução"></textarea>
+        </article>
+        <article class="canvas-card card-channels">
+          <div class="card-heading"><span class="card-index">05</span><h3>Canais</h3></div>
+          <p class="card-hint">Onde você encontra e conversa com essas pessoas?</p>
+          <textarea data-canvas="channels" placeholder="Ex.: comunidades online, universidades, LinkedIn, eventos..." aria-label="Canais"></textarea>
+        </article>
+        <article class="canvas-card card-revenue">
+          <div class="card-heading"><span class="card-index">06</span><h3>Fontes de receita</h3></div>
+          <p class="card-hint">Como o projeto pode gerar valor e receita?</p>
+          <textarea data-canvas="revenue" placeholder="Ex.: plano gratuito e assinatura para recursos avançados..." aria-label="Fontes de receita"></textarea>
+        </article>
+        <article class="canvas-card card-costs">
+          <div class="card-heading"><span class="card-index">07</span><h3>Estrutura de custos</h3></div>
+          <p class="card-hint">Quais custos são necessários para operar o MVP?</p>
+          <textarea data-canvas="costs" placeholder="Ex.: hospedagem, ferramentas de IA e aquisição de usuários..." aria-label="Estrutura de custos"></textarea>
+        </article>
+        <article class="canvas-card card-metrics">
+          <div class="card-heading"><span class="card-index">08</span><h3>Métricas-chave</h3></div>
+          <p class="card-hint">Que sinais mostram que a ideia está funcionando?</p>
+          <textarea data-canvas="metrics" placeholder="Ex.: canvas concluídos, prompts copiados e entrevistas realizadas..." aria-label="Métricas-chave"></textarea>
+        </article>
+        <article class="canvas-card card-advantage">
+          <div class="card-heading"><span class="card-index">09</span><h3>Vantagem injusta</h3></div>
+          <p class="card-hint">O que é difícil de copiar ou construir?</p>
+          <textarea data-canvas="advantage" placeholder="Ex.: comunidade própria ou conhecimento de um nicho específico..." aria-label="Vantagem injusta"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section class="agent-section" aria-labelledby="agentTitle">
+      <div class="section-heading agent-heading">
+        <div>
+          <span class="section-kicker">passo 02</span>
+          <h2 id="agentTitle">Configure seu agente</h2>
+        </div>
+        <p class="section-description">Diga ao agente como pensar, responder e ajudar você.</p>
+      </div>
+      <div class="agent-layout">
+        <form class="settings-panel" id="settingsForm">
+          <label class="field field-wide">
+            <span>Nome do agente</span>
+            <input data-setting="agentName" type="text" placeholder="Ex.: Mentor de validação" autocomplete="off">
+          </label>
+          <label class="field field-wide">
+            <span>Objetivo principal</span>
+            <textarea data-setting="objective" rows="2" placeholder="Ex.: me ajudar a validar se devo construir este produto"></textarea>
+          </label>
+          <label class="field">
+            <span>Tom de voz</span>
+            <select data-setting="tone">
+              <option value="">Escolha um tom</option>
+              <option>direto e pragmático</option>
+              <option>didático e encorajador</option>
+              <option>crítico e provocador</option>
+              <option>criativo e descontraído</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Formato das respostas</span>
+            <select data-setting="format">
+              <option value="">Escolha um formato</option>
+              <option>passos práticos</option>
+              <option>perguntas para reflexão</option>
+              <option>tabela comparativa</option>
+              <option>resumo executivo</option>
+            </select>
+          </label>
+          <label class="field field-wide">
+            <span>Regra extra para o agente <small>(opcional)</small></span>
+            <textarea data-setting="constraint" rows="2" placeholder="Ex.: não sugira funcionalidades antes de questionar minhas hipóteses"></textarea>
+          </label>
+        </form>
+
+        <aside class="prompt-panel" aria-labelledby="promptTitle">
+          <div class="prompt-topline">
+            <div>
+              <span class="section-kicker">resultado em tempo real</span>
+              <h3 id="promptTitle">Prompt do seu agente</h3>
+            </div>
+            <span class="prompt-badge" id="promptBadge">rascunho</span>
+          </div>
+          <div class="prompt-output" id="promptOutput" aria-live="polite"></div>
+          <div class="prompt-actions">
+            <button class="button button-primary" id="copyButton" type="button">
+              <span class="copy-icon" aria-hidden="true">↗</span> Copiar prompt
+            </button>
+            <span class="copy-feedback" id="copyFeedback" role="status"></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="finish-note" aria-label="Próximo passo">
+      <span class="finish-line"></span>
+      <p><strong>Uma boa hipótese merece um próximo passo.</strong><br>Copie o prompt, abra seu agente LLM favorito e comece a conversar.</p>
+      <span class="finish-mark">c·</span>
+    </section>
+  </main>
+
+  <footer class="footer"><span>canvllm</span><span>feito para transformar intenção em ação</span></footer>
+  <script src="./app.js"></script>
+</body>
+</html>
