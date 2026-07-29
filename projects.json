@@ -1,5 +1,17 @@
 [
   {
+    "slug": "monstergen",
+    "name": "monstergen",
+    "description": "Gerador de nomes e sabores para imaginar a próxima lata.",
+    "tags": [
+      "web",
+      "mvp",
+      "gerador",
+      "sabores"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "piadas-infantis",
     "name": "Rir & Brincar",
     "description": "Uma adivinha infantil por vez, com resposta escondida e novas piadas.",
