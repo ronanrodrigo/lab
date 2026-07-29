@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Central de projetos pessoais de Ronan Rodrigo." />
+    <title>playground — projetos pessoais</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Voltar para o início">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>playground</span>
+      </a>
+      <a class="header-link" href="https://github.com/ronanrodrigo/playground" target="_blank" rel="noreferrer">
+        Ver no GitHub <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main class="container">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> laboratório aberto</p>
+        <h1 id="page-title">Ideias pequenas.<br /><em>Experiências reais.</em></h1>
+        <p class="hero-copy">
+          Um lugar para explorar projetos pessoais, protótipos e experimentos — sem cerimônia.
+        </p>
+      </section>
+
+      <section class="projects-section" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">coleção</p>
+            <h2 id="projects-title">Projetos</h2>
+          </div>
+          <label class="search-box" for="project-search">
+            <span aria-hidden="true">⌕</span>
+            <span class="sr-only">Filtrar projetos</span>
+            <input id="project-search" type="search" placeholder="Filtrar" autocomplete="off" />
+          </label>
+        </div>
+
+        <div id="projects-status" class="status-message" role="status" aria-live="polite">
+          <span class="loader" aria-hidden="true"></span>
+          Carregando projetos…
+        </div>
+        <div id="projects-list" class="projects-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <span>Feito para aprender, testar e compartilhar.</span>
+      <a href="https://ronanrodrigo.dev" target="_blank" rel="noreferrer">ronanrodrigo.dev ↗</a>
+    </footer>
+  </body>
+</html>

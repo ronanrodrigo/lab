@@ -1,0 +1,13 @@
+{
+  "name": "playground",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Central de projetos pessoais de Ronan Rodrigo",
+  "scripts": {
+    "generate": "node scripts/generate-projects.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
