@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Sugerir uma melhoria relacionada ao lab ou a um projeto
- title: "[feature] "
+title: "[feature] "
 labels: enhancement
 assignees: ''
 ---
