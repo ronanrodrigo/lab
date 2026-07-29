@@ -3,10 +3,12 @@ name: Deploy playground to GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - projects.json
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -25,6 +27,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Generate project manifest
+        run: npm run generate
+
+      - name: Commit updated project manifest
+        run: |
+          if git diff --quiet -- projects.json; then
+            echo "Project manifest is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects.json
+          git commit -m "chore: update project manifest"
+          git push
 
       - name: Build static site
         run: npm run build
