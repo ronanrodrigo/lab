@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#fffaf3">
+  <meta name="description" content="fruitin: descubra frutas por gestos e encontre suas favoritas.">
+  <title>fruitin — descubra frutas</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="fruitin, início">fruitin</a>
+      <button class="history-button" id="history-button" type="button" aria-haspopup="dialog" aria-controls="history-dialog">
+        <span>histórico</span><span class="count-badge" id="match-count">0</span>
+      </button>
+    </header>
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">seu radar de frutas</p>
+      <h1 id="page-title">Qual é a sua próxima fruta favorita?</h1>
+      <p class="helper">Deslize para decidir. Direita é gostei, esquerda é não gostei e para cima é nunca provei.</p>
+    </section>
+    <section class="discovery" aria-live="polite" aria-atomic="true">
+      <div class="progress-row"><span id="progress-label">carregando frutas</span><span id="progress-value"></span></div>
+      <div class="card-stage" id="card-stage"><div class="loading-state" id="loading-state"><div class="loading-orbit" aria-hidden="true"></div><p>preparando suas frutas</p></div></div>
+      <p class="gesture-hint" id="gesture-hint">arraste o card ou use os botões</p>
+    </section>
+    <nav class="actions" aria-label="Decisão sobre a fruta atual">
+      <button class="action action-left" data-decision="dislike" type="button" aria-label="Não gostei"><span class="action-mark" aria-hidden="true">×</span><span>não gostei</span></button>
+      <button class="action action-up" data-decision="unknown" type="button" aria-label="Nunca provei"><span class="action-mark" aria-hidden="true">↑</span><span>nunca provei</span></button>
+      <button class="action action-right" data-decision="like" type="button" aria-label="Gostei"><span class="action-mark" aria-hidden="true">+</span><span>gostei</span></button>
+    </nav>
+    <p class="keyboard-hint">dica: use as setas do teclado para experimentar</p>
+  </main>
+  <dialog class="history-dialog" id="history-dialog" aria-labelledby="history-title">
+    <div class="dialog-header"><div><p class="eyebrow">suas decisões</p><h2 id="history-title">histórico</h2></div><button class="close-button" id="close-history" type="button" aria-label="Fechar histórico">×</button></div>
+    <div class="history-content" id="history-content"></div>
+    <button class="reset-button" id="reset-button" type="button">começar de novo</button>
+  </dialog>
+  <script src="./app.js" defer></script>
+</body>
+</html>
