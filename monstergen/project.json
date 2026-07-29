@@ -1,0 +1,6 @@
+{
+  "name": "monstergen",
+  "description": "Gerador de nomes e sabores para imaginar a próxima lata.",
+  "tags": ["web", "mvp", "gerador", "sabores"],
+  "status": "experimento"
+}
