@@ -128,6 +128,14 @@ function restore() {
 fields.forEach((field) => field.addEventListener('input', update));
 fields.filter((field) => field.tagName === 'SELECT').forEach((field) => field.addEventListener('change', update));
 
+document.querySelector('#exampleButton').addEventListener('click', () => {
+  applyState(exampleState);
+  update();
+  copyFeedback.textContent = 'Exemplo carregado.';
+  window.setTimeout(() => { copyFeedback.textContent = ''; }, 3200);
+  document.querySelector('[data-canvas="problem"]').focus();
+});
+
 document.querySelector('#clearButton').addEventListener('click', () => {
   fields.forEach((field) => { field.value = ''; });
   localStorage.removeItem(STORAGE_KEY);
