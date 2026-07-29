@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Relatar um comportamento inesperado em um projeto
- title: "[bug] "
+title: "[bug] "
 labels: bug
 assignees: ''
 ---
