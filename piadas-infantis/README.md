@@ -1,8 +1,12 @@
 # Rir & Brincar
 
-Projeto migrado para o monorepo [playground](https://github.com/ronanrodrigo/playground). A página está disponível em:
+Projeto migrado para o monorepo [lab](https://github.com/ronanrodrigo/lab). A página está disponível em:
 
-`https://ronanrodrigo.github.io/playground/piadas-infantis/`
+`https://ronanrodrigo.github.io/lab/piadas-infantis/`
+
+No domínio personalizado:
+
+`https://ronanrodrigo.dev/lab/piadas-infantis/`
 
 Uma página web estática para crianças: a cada acesso, uma adivinha aleatória é exibida. A criança pode pensar na resposta, revelá-la e escolher outra.
 

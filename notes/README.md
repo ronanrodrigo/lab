@@ -1,10 +1,14 @@
 # Notas
 
-Versão estática das notas pessoais, migrada para o monorepo [playground](https://github.com/ronanrodrigo/playground).
+Versão estática das notas pessoais, migrada para o monorepo [lab](https://github.com/ronanrodrigo/lab).
 
 A página está disponível em:
 
-`https://ronanrodrigo.github.io/playground/notes/`
+`https://ronanrodrigo.github.io/lab/notes/`
+
+No domínio personalizado:
+
+`https://ronanrodrigo.dev/lab/notes/`
 
 ## Fluxo
 

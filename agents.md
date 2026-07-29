@@ -2,7 +2,11 @@
 
 Este repositório é um monorepo de experimentos web estáticos. Cada projeto deve viver em uma pasta própria na raiz e ser publicado em:
 
-`https://ronanrodrigo.github.io/playground/{nome-do-projeto}/`
+`https://ronanrodrigo.github.io/lab/{nome-do-projeto}/`
+
+A central está disponível em:
+
+`https://ronanrodrigo.dev/lab/`
 
 ## Criando um projeto
 
@@ -14,7 +18,7 @@ Este repositório é um monorepo de experimentos web estáticos. Cada projeto de
 
 2. Adicione um `index.html` dentro dela. Esse arquivo é obrigatório: a automação usa a presença dele para identificar a pasta como um projeto publicável.
 
-3. Mantenha CSS, JavaScript, imagens e fontes do projeto dentro da própria pasta. Use caminhos relativos, por exemplo `./styles.css`, para que o projeto funcione no endereço com prefixo `/playground/`.
+3. Mantenha CSS, JavaScript, imagens e fontes do projeto dentro da própria pasta. Use caminhos relativos, por exemplo `./styles.css`, para que o projeto funcione no endereço com prefixo `/lab/`.
 
 4. Adicione um `project.json` para personalizar o cartão exibido na página inicial:
 
@@ -46,5 +50,5 @@ Este repositório é um monorepo de experimentos web estáticos. Cada projeto de
 * Prefira páginas estáticas sem backend para manter os experimentos simples e independentes.
 * Garanta que o fluxo principal funcione em telas pequenas e grandes.
 * Inclua estados de carregamento, vazio, erro e sucesso quando forem relevantes ao experimento.
-* Não altere `scripts/`, `app.js` ou `projects.json` para cadastrar manualmente um projeto. O manifesto é gerado automaticamente a partir das pastas com `index.html`.
+* Não altere `scripts/` ou `projects.json` para cadastrar manualmente um projeto. O manifesto é gerado automaticamente a partir das pastas com `index.html`.
 * Não crie pastas de projeto para arquivos compartilhados. Diretórios começando com ponto e as pastas de infraestrutura são ignorados pelo gerador.

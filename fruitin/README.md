@@ -1,6 +1,6 @@
 # fruitin
 
-MVP estático mobile-first migrado do repositório [`ronanrodrigo/fruitin`](https://github.com/ronanrodrigo/fruitin) para o monorepo playground.
+MVP estático mobile-first migrado do repositório [`ronanrodrigo/fruitin`](https://github.com/ronanrodrigo/fruitin) para o monorepo lab.
 
 ## Objetivo
 
@@ -37,7 +37,7 @@ Abra `http://localhost:8080/fruitin/`. Para testar diretamente a pasta do projet
 
 Após a publicação do monorepo, acesse:
 
-<https://ronanrodrigo.github.io/playground/fruitin/>
+<https://ronanrodrigo.github.io/lab/fruitin/>
 
 O manifesto da página central é gerado automaticamente pelo workflow a partir da presença de `index.html`; `projects.json` não deve ser editado manualmente.
 

@@ -49,7 +49,11 @@ Nesse caso, abra `http://localhost:8080/`.
 
 Após a publicação do monorepo no GitHub Pages, o MVP estará disponível em:
 
-<https://ronanrodrigo.github.io/playground/monstergen/>
+<https://ronanrodrigo.github.io/lab/monstergen/>
+
+No domínio personalizado:
+
+<https://ronanrodrigo.dev/lab/monstergen/>
 
 A pasta é detectada automaticamente porque contém `index.html`. O manifesto da central é regenerado pelo workflow; `projects.json` não foi alterado manualmente.
 
@@ -57,10 +61,10 @@ A pasta é detectada automaticamente porque contém `index.html`. O manifesto da
 
 * HTML, CSS e JavaScript vanilla, sem framework ou dependências de runtime.
 * Não há API, backend, autenticação ou banco de dados.
-* Os dados são simulados localmente: 10 bases de sabor combinadas com 6 acentos geram 60 possibilidades, atendendo à quantidade mínima de 50 informada no briefing.
+* Os dados são simulados localmente: 10 bases de sabor combinadas com 6 acentos geram 60 possibilidades.
 * O resultado fica somente em memória e nenhum dado pessoal é salvo.
 * A Clipboard API é usada quando disponível; em caso de bloqueio, a interface informa a limitação.
-* Todos os recursos do projeto usam caminhos relativos para funcionar no prefixo `/playground/monstergen/`.
+* Todos os recursos do projeto usam caminhos relativos para funcionar no prefixo `/lab/monstergen/`.
 
 ## Decisões visuais
 

@@ -1,14 +1,18 @@
-# playground
+# lab
 
 Central dos projetos pessoais de Ronan Rodrigo. Cada experimento web fica em sua própria pasta e pode ser acessado em:
 
-`https://ronanrodrigo.github.io/playground/{nome-do-projeto}/`
+`https://ronanrodrigo.github.io/lab/{nome-do-projeto}/`
 
 ## Projetos
 
 * [Rir & Brincar](./piadas-infantis/) — uma adivinha infantil por vez, com resposta escondida e novas piadas.
 
 A listagem da página inicial é atualizada automaticamente durante o build sempre que uma nova pasta contendo `index.html` é adicionada à raiz.
+
+A página está disponível em:
+
+`https://ronanrodrigo.dev/lab/`
 
 ## Objetivo
 
@@ -66,7 +70,7 @@ O processo para criar novos projetos está documentado em [`agents.md`](./agents
 
 A página `https://ronanrodrigo.dev/notes/tags/` foi acessada antes da implementação. Foram aproveitados princípios pertinentes de escopo reduzido, interface clara, organização simples e publicação estática. Nenhuma API ou credencial foi utilizada.
 
-A listagem automática depende da execução do workflow de publicação. O GitHub Pages precisa estar configurado para usar o workflow de Actions.
+A listagem automática depende da execução do workflow de publicação. O GitHub Pages precisa estar configurado para usar o workflow de Actions. O domínio personalizado `ronanrodrigo.dev/lab/` depende da configuração de roteamento do domínio fora deste repositório.
 
 ## Próximos passos
 
