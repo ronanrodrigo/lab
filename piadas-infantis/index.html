@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e8dcc5" />
+    <meta name="description" content="Uma piada infantil por vez." />
+    <title>Rir & Brincar</title>
+    <link rel="stylesheet" href="./styles.css?v=7" />
+    <script src="./jokes.js?v=5" defer></script>
+    <script src="./app.js?v=4" defer></script>
+  </head>
+  <body>
+    <main class="joke" aria-labelledby="joke-heading">
+      <div id="joke-content">
+        <h1 id="joke-heading" class="question"></h1>
+        <p id="joke-answer" class="answer" hidden></p>
+      </div>
+      <div class="actions">
+        <button id="reveal-button" class="button button-primary" type="button">Mostrar continuação</button>
+        <button id="new-joke-button" class="button button-secondary" type="button">Próxima</button>
+      </div>
+    </main>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+      }
+    </script>
+  </body>
+</html>

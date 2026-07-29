@@ -1,0 +1,33 @@
+:root {
+  --ink: #51443d;
+  --purple: #9a8cc4;
+  --purple-dark: #786aa3;
+  --yellow: #e6c879;
+  --cream: #e8dcc5;
+  --white: #fffaf0;
+  --blue: #a8c4c5;
+  --blue-dark: #789b9d;
+  --footer-space: 6.5rem;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; min-width: 320px; margin: 0; overflow: hidden; }
+body { position: relative; color: var(--ink); font-family: "Trebuchet MS", "Segoe UI", sans-serif; background: var(--cream); }
+.joke { position: absolute; top: 0; left: 50%; display: grid; width: min(720px, calc(100% - 2rem)); height: calc(100% - var(--footer-space)); place-items: center; padding: 1.25rem; text-align: center; transform: translateX(-50%); }
+.question { max-width: 680px; margin: 0; color: var(--ink); font-size: clamp(1.8rem, 5vw, 3.2rem); line-height: 1.14; letter-spacing: -0.045em; }
+.answer { max-width: 680px; margin: 1.25rem auto 0; color: var(--ink); font-size: clamp(1.45rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; }
+.actions { position: fixed; right: 0; bottom: 0; left: 0; z-index: 2; display: flex; justify-content: center; gap: 0.8rem; min-height: var(--footer-space); padding: 1rem 1.25rem 1.25rem; background: var(--cream); }
+.button { min-height: 3.25rem; padding: 0.8rem 1.2rem; border: 0; border-radius: 0.75rem; cursor: pointer; color: var(--ink); font: inherit; font-weight: 900; transition: transform 160ms ease, opacity 160ms ease; }
+.button:hover:not(:disabled) { transform: translateY(-2px); }
+.button:active:not(:disabled) { transform: translateY(0); }
+.button:focus-visible { outline: 4px solid rgba(120, 155, 157, 0.38); outline-offset: 3px; }
+.button:disabled { cursor: default; opacity: 0.55; }
+.button-primary { background: var(--purple); box-shadow: 0 4px 0 var(--purple-dark); }
+.button-secondary { background: var(--blue); box-shadow: 0 4px 0 var(--blue-dark); }
+@media (max-width: 520px) {
+  :root { --footer-space: 9.5rem; }
+  .joke { width: 100%; padding: 1rem; }
+  .question { font-size: clamp(1.7rem, 8vw, 2.5rem); }
+  .actions { flex-direction: column; padding: 0.75rem 1rem 1rem; }
+  .button { width: 100%; }
+}
