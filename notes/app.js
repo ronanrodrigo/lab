@@ -53,10 +53,14 @@ function normalizeNotes(data) {
 
 function renderTags() {
   const tags = [...new Set(notes.flatMap((note) => note.tags))].sort((a, b) => a.localeCompare(b));
-  tagList.innerHTML = [
-    `<button class="tag-button ${selectedTag === '' ? 'is-active' : ''}" data-tag="">todas</button>`,
-    ...tags.map((tag) => `<button class="tag-button ${selectedTag === tag ? 'is-active' : ''}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`)
-  ].join('');
+  tagList.innerHTML = `
+    <details class="tags-accordion" ${selectedTag ? 'open' : ''}>
+      <summary>filtrar por tag${selectedTag ? ` · ${escapeHtml(selectedTag)}` : ''}</summary>
+      <div class="tags-accordion-content">
+        <button class="tag-button ${selectedTag === '' ? 'is-active' : ''}" data-tag="">todas</button>
+        ${tags.map((tag) => `<button class="tag-button ${selectedTag === tag ? 'is-active' : ''}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`).join('')}
+      </div>
+    </details>`;
 
   tagList.querySelectorAll('[data-tag]').forEach((button) => {
     button.addEventListener('click', () => {
