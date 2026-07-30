@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Notas, referências e aprendizados sobre tecnologia, IA e desenvolvimento." />
-    <title>Notas — lab</title>
+    <title>Notas — playground</title>
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./app.js"></script>
   </head>
   <body>
     <header class="site-header">
-      <a class="back-link" href="../">← lab</a>
+      <a class="back-link" href="../">← playground</a>
       <span class="site-label">notas pessoais</span>
     </header>
 
@@ -27,12 +27,16 @@
           <span class="sr-only">Buscar notas</span>
           <input id="search-input" type="search" placeholder="Buscar notas" autocomplete="off" />
         </label>
-        <div id="tag-list" class="tag-list" aria-label="Filtrar por tag"></div>
+        <div id="tag-list" class="tag-list" aria-label="Fonte dos dados"></div>
       </section>
 
       <div class="content-heading">
         <p class="eyebrow">coleção</p>
         <p id="notes-count" class="count"></p>
+      </div>
+      <div id="notes-status" class="notes-status" role="status" aria-live="polite">
+        <span class="loader" aria-hidden="true"></span>
+        Carregando notas…
       </div>
       <section id="notes-list" class="notes-list" aria-live="polite"></section>
     </main>

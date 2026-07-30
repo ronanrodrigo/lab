@@ -7,7 +7,7 @@ body { margin: 0; color: var(--ink); background: var(--paper); font-family: 'DM 
 a { color: inherit; }
 .shell { width: min(1080px, calc(100% - 48px)); margin-inline: auto; }
 .site-header { width: min(1180px, calc(100% - 48px)); height: 88px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-.back-link, .site-label, .eyebrow, .count, .note-meta, .tag-button, .inline-tag { font-family: 'DM Mono', monospace; }
+.back-link, .site-label, .eyebrow, .count, .note-meta, .source-badge, .source-link, .note-footer code { font-family: 'DM Mono', monospace; }
 .back-link { color: var(--muted); font-size: .75rem; text-decoration: none; }
 .back-link:hover { color: var(--ink); }
 .site-label { color: var(--muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
@@ -22,21 +22,26 @@ h1 em { color: var(--accent-dark); font-style: normal; }
 .search input { width: 100%; border: 0; outline: 0; color: var(--ink); background: transparent; font: .75rem 'DM Mono', monospace; }
 .search input::placeholder { color: var(--muted); }
 .tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
-.tag-button, .inline-tag { border: 0; cursor: pointer; }
-.tag-button { padding: 7px 9px; border-radius: 5px; color: var(--muted); background: transparent; font-size: .62rem; }
-.tag-button:hover, .tag-button.is-active { color: var(--accent-dark); background: var(--accent); }
+.source-badge { padding: 7px 9px; border-radius: 5px; color: var(--accent-dark); background: var(--accent); font-size: .62rem; text-decoration: none; }
+.source-badge:hover { filter: brightness(.96); }
 .content-heading { display: flex; align-items: baseline; justify-content: space-between; padding: 46px 0 16px; }
 .content-heading .eyebrow { margin: 0; }
 .count { margin: 0; color: var(--muted); font-size: .68rem; }
+.notes-status { min-height: 42px; padding: 12px 0; color: var(--muted); font: .72rem 'DM Mono', monospace; }
+.notes-status.is-success { color: var(--accent-dark); }
+.notes-status.is-error { padding: 18px; border: 1px solid #f1b9a7; border-radius: 10px; color: #a45237; background: #fff8f4; font-family: 'DM Sans', sans-serif; line-height: 1.5; }
+.notes-status strong { color: var(--ink); }
+.loader { display: inline-block; width: 13px; height: 13px; margin-right: 8px; vertical-align: -2px; border: 2px solid var(--line); border-top-color: var(--accent-dark); border-radius: 50%; animation: spin .8s linear infinite; }
 .notes-list { border-top: 1px solid var(--line); }
 .note-card { display: grid; grid-template-columns: 140px 1fr; gap: 28px; padding: 28px 0; border-bottom: 1px solid var(--line); animation: rise .45s both; animation-delay: var(--delay); }
 .note-meta { display: flex; flex-direction: column; justify-content: space-between; min-height: 110px; color: var(--muted); font-size: .67rem; }
 .note-meta span { color: var(--accent-dark); }
 .note-body h2 { margin: 0 0 9px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.35rem, 3vw, 2rem); letter-spacing: -.05em; }
 .note-body p { max-width: 680px; margin: 0; color: var(--muted); line-height: 1.6; }
-.note-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
-.inline-tag { padding: 0; color: var(--accent-dark); background: transparent; font-size: .64rem; }
-.inline-tag:hover { text-decoration: underline; }
+.note-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; }
+.note-footer code { color: var(--muted); font-size: .64rem; }
+.source-link { color: var(--accent-dark); font-size: .64rem; text-decoration: none; white-space: nowrap; }
+.source-link:hover { text-decoration: underline; }
 .empty { display: flex; min-height: 180px; align-items: center; justify-content: center; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--line); color: var(--muted); text-align: center; }
 .empty strong { color: var(--ink); }
 .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px 0 35px; color: var(--muted); font: .67rem 'DM Mono', monospace; }
@@ -44,5 +49,6 @@ h1 em { color: var(--accent-dark); font-style: normal; }
 .site-footer a:hover { color: var(--ink); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@media (prefers-color-scheme: dark) { :root { --ink: #eef2e7; --muted: #a5ae9c; --line: #384131; --paper: #171a15; --card: #22271d; --accent-dark: #c5ef63; } .search { background: rgba(34,39,29,.72); } .search:focus-within { border-color: #72884b; background: var(--card); } }
-@media (max-width: 700px) { .shell, .site-header { width: min(100% - 32px, 1080px); } .site-header { height: 72px; } .site-label { font-size: .6rem; } .intro { padding: 76px 0 80px; } .toolbar { align-items: stretch; flex-direction: column; } .search { width: 100%; } .note-card { grid-template-columns: 1fr; gap: 12px; } .note-meta { min-height: 0; flex-direction: row; } .site-footer { align-items: flex-start; flex-direction: column; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-color-scheme: dark) { :root { --ink: #eef2e7; --muted: #a5ae9c; --line: #384131; --paper: #171a15; --card: #22271d; --accent-dark: #c5ef63; } .search { background: rgba(34,39,29,.72); } .search:focus-within { border-color: #72884b; background: var(--card); } .notes-status.is-error { border-color: #784535; color: #f0a487; background: #2b1d19; } }
+@media (max-width: 700px) { .shell, .site-header { width: min(100% - 32px, 1080px); } .site-header { height: 72px; } .site-label { font-size: .6rem; } .intro { padding: 76px 0 80px; } .toolbar { align-items: stretch; flex-direction: column; } .search { width: 100%; } .note-card { grid-template-columns: 1fr; gap: 12px; } .note-meta { min-height: 0; flex-direction: row; } .note-footer { align-items: flex-start; flex-direction: column; gap: 10px; } .site-footer { align-items: flex-start; flex-direction: column; } }
