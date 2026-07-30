@@ -54,7 +54,6 @@ function normalizeNotes(data) {
 function renderTags() {
   const tags = [...new Set(notes.flatMap((note) => note.tags))].sort((a, b) => a.localeCompare(b));
   tagList.innerHTML = [
-    `<a class="source-badge" href="${INDEX_URL}" target="_blank" rel="noreferrer">index.json · fonte remota ↗</a>`,
     `<button class="tag-button ${selectedTag === '' ? 'is-active' : ''}" data-tag="">todas</button>`,
     ...tags.map((tag) => `<button class="tag-button ${selectedTag === tag ? 'is-active' : ''}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`)
   ].join('');
