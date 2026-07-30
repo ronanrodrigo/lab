@@ -6,6 +6,7 @@ const tagList = document.querySelector('#tag-list');
 const count = document.querySelector('#notes-count');
 const status = document.querySelector('#notes-status');
 let notes = [];
+let selectedTag = '';
 
 const formatDate = (date) => {
   if (!date) return 'sem data';
@@ -45,26 +46,40 @@ function normalizeNotes(data) {
       slug: entry.slug,
       path: entry.path || '',
       title: entry.title || titleFromSlug(entry.slug),
-      summary: entry.summary || `Nota publicada em ${formatDate(entry.date)}.`,
+      description: entry.description || 'Sem descrição disponível.',
       tags: Array.isArray(entry.tags) ? entry.tags : []
     }));
 }
 
-function renderSource() {
-  tagList.innerHTML = `<a class="source-badge" href="${INDEX_URL}" target="_blank" rel="noreferrer">index.json · fonte remota ↗</a>`;
+function renderTags() {
+  const tags = [...new Set(notes.flatMap((note) => note.tags))].sort((a, b) => a.localeCompare(b));
+  tagList.innerHTML = [
+    `<a class="source-badge" href="${INDEX_URL}" target="_blank" rel="noreferrer">index.json · fonte remota ↗</a>`,
+    `<button class="tag-button ${selectedTag === '' ? 'is-active' : ''}" data-tag="">todas</button>`,
+    ...tags.map((tag) => `<button class="tag-button ${selectedTag === tag ? 'is-active' : ''}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`)
+  ].join('');
+
+  tagList.querySelectorAll('[data-tag]').forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedTag = button.dataset.tag;
+      renderTags();
+      renderNotes();
+    });
+  });
 }
 
 function renderNotes() {
   const query = search.value.trim().toLowerCase();
   const filtered = notes.filter((note) => {
-    const text = `${note.title} ${note.summary} ${note.slug} ${note.path} ${note.tags.join(' ')}`.toLowerCase();
-    return text.includes(query);
+    const matchesTag = !selectedTag || note.tags.includes(selectedTag);
+    const text = `${note.title} ${note.description} ${note.slug} ${note.path} ${note.tags.join(' ')}`.toLowerCase();
+    return matchesTag && text.includes(query);
   });
 
   count.textContent = `${filtered.length} ${filtered.length === 1 ? 'nota' : 'notas'}`;
 
   if (!filtered.length) {
-    list.innerHTML = '<div class="empty"><strong>Nenhuma nota encontrada.</strong><span>Tente outra busca.</span></div>';
+    list.innerHTML = '<div class="empty"><strong>Nenhuma nota encontrada.</strong><span>Tente outra busca ou remova o filtro.</span></div>';
     return;
   }
 
@@ -76,17 +91,27 @@ function renderNotes() {
       </div>
       <div class="note-body">
         <h2>${escapeHtml(note.title)}</h2>
-        <p>${escapeHtml(note.summary)}</p>
+        <p>${escapeHtml(note.description)}</p>
+        <div class="note-tags">
+          ${note.tags.map((tag) => `<button class="inline-tag ${selectedTag === tag ? 'is-selected' : ''}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`).join('')}
+        </div>
         <div class="note-footer">
           <code>${escapeHtml(note.slug)}</code>
           <a class="source-link" href="${sourceUrl(note.path)}" target="_blank" rel="noreferrer">ver fonte ↗</a>
         </div>
       </div>
     </article>`).join('');
+
+  list.querySelectorAll('.inline-tag').forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedTag = button.dataset.tag;
+      renderTags();
+      renderNotes();
+    });
+  });
 }
 
 async function loadNotes() {
-  renderSource();
   setStatus('<span class="loader" aria-hidden="true"></span>Carregando notas da fonte remota…', 'is-loading');
 
   try {
@@ -96,12 +121,14 @@ async function loadNotes() {
     if (!Array.isArray(data)) throw new Error('O index.json não contém uma lista válida');
 
     notes = normalizeNotes(data);
+    renderTags();
     renderNotes();
     setStatus(`${notes.length} notas carregadas de index.json.`, 'is-success');
   } catch (error) {
     notes = [];
     count.textContent = '';
     list.innerHTML = '';
+    renderTags();
     setStatus('<strong>Não foi possível carregar as notas.</strong><br />A fonte remota pode estar indisponível. Tente novamente mais tarde.', 'is-error');
     console.error(error);
   }
