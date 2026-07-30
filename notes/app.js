@@ -1,6 +1,6 @@
 const INDEX_URL = 'https://raw.githubusercontent.com/ronanrodrigo/notes/refs/heads/main/index.json';
 
-const notesList = document.querySelector('#notes-list');
+const list = document.querySelector('#notes-list');
 const search = document.querySelector('#search-input');
 const tagList = document.querySelector('#tag-list');
 const count = document.querySelector('#notes-count');
@@ -46,8 +46,8 @@ function normalizeNotes(data) {
       slug: entry.slug,
       path: entry.path || '',
       title: entry.title || titleFromSlug(entry.slug),
-      description: entry.description || 'Sem descrição disponível.',
-      tags: Array.isArray(entry.tags) ? entry.tags : []
+      tags: Array.isArray(entry.tags) ? entry.tags : [],
+      description: entry.description || 'Sem descrição disponível.'
     }));
 }
 
@@ -79,11 +79,11 @@ function renderNotes() {
   count.textContent = `${filtered.length} ${filtered.length === 1 ? 'nota' : 'notas'}`;
 
   if (!filtered.length) {
-    notesList.innerHTML = '<div class="empty"><strong>Nenhuma nota encontrada.</strong><span>Tente outra busca ou remova o filtro.</span></div>';
+    list.innerHTML = '<div class="empty"><strong>Nenhuma nota encontrada.</strong><span>Tente outra busca ou remova o filtro.</span></div>';
     return;
   }
 
-  notesList.innerHTML = filtered.map((note, index) => `
+  list.innerHTML = filtered.map((note, index) => `
     <article class="note-card" style="--delay: ${index * 35}ms">
       <div class="note-meta">
         <time datetime="${escapeHtml(note.date)}">${escapeHtml(formatDate(note.date))}</time>
@@ -102,7 +102,7 @@ function renderNotes() {
       </div>
     </article>`).join('');
 
-  notesList.querySelectorAll('.inline-tag').forEach((button) => {
+  list.querySelectorAll('.inline-tag').forEach((button) => {
     button.addEventListener('click', () => {
       selectedTag = button.dataset.tag;
       renderTags();
@@ -127,7 +127,7 @@ async function loadNotes() {
   } catch (error) {
     notes = [];
     count.textContent = '';
-    notesList.innerHTML = '';
+    list.innerHTML = '';
     renderTags();
     setStatus('<strong>Não foi possível carregar as notas.</strong><br />A fonte remota pode estar indisponível. Tente novamente mais tarde.', 'is-error');
     console.error(error);
