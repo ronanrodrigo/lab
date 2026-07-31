@@ -1,115 +1,117 @@
-# Live shopping
+# LiveFlow — pitch de live shopping
 
-Guia visual e protótipo navegável sobre a criação de uma plataforma de live shopping — transmissão ao vivo, interação em tempo real e compra contextual no mesmo fluxo.
+Pitch visual e demo navegável de uma plataforma que transforma transmissões ao vivo em experiências de compra.
 
-## Objetivo do MVP
+## Objetivo
 
-Tornar a ideia compreensível em poucos segundos e permitir que uma pessoa experimente o fluxo central de uma live: assistir à demonstração, acompanhar o chat, reagir, destacar produtos, adicionar um item ao carrinho e chegar a um checkout demonstrativo.
+Este projeto deixou de ser apenas um guia sobre live shopping e passou a funcionar como um pitch de produto. A página apresenta a tese, o problema, o fluxo da solução, os públicos beneficiados, o modelo de entrada no mercado e uma demonstração interativa da experiência.
 
-O MVP não tenta construir uma plataforma de vídeo real. Ele valida a proposta de valor e ajuda a discutir quais componentes são essenciais antes de investir em infraestrutura própria.
+A mensagem central é: **a live deixa de ser conteúdo e vira o momento da compra**.
 
 ## Problema
 
-Em uma live tradicional, o conteúdo, a conversa e a compra costumam estar separados. A pessoa precisa sair da transmissão, procurar o produto e reconstruir o contexto da oferta. Essa fricção pode fazer a intenção de compra se perder.
+Marcas e criadores já usam transmissões para demonstrar produtos e conversar com a audiência. Porém, quando o produto, o chat e o checkout estão separados, a intenção de compra se perde entre a descoberta e a transação.
 
-O live shopping aproxima demonstração, confiança, interação e checkout, mas exige coordenação entre vídeo, catálogo, estoque, moderação, pagamento e métricas.
+## Proposta
+
+O LiveFlow é uma camada de comércio sobre qualquer transmissão. A plataforma conecta:
+
+* Player de vídeo e produto em destaque.
+* Chat, reações e moderação em tempo real.
+* Catálogo, estoque, cupons e ofertas.
+* Carrinho e checkout contextual.
+* Métricas de audiência, engajamento e conversão.
+* Operação de estúdio, host e produção como serviço.
 
 ## Público-alvo
 
 * Marcas e varejistas de moda, beleza, casa e eletrônicos.
-* Influenciadores e hosts que querem transformar audiência em vendas.
-* Agências e estúdios de produção que oferecem lives como serviço.
-* Negócios locais de Joinville que desejam testar o formato com uma operação enxuta.
+* Influenciadores e hosts com audiência própria.
+* Agências e estúdios de produção audiovisual.
+* Negócios locais de Joinville que querem testar live commerce com uma operação enxuta.
 
-## Fluxo principal
+## Roteiro do pitch
 
-1. A pessoa chega à página e entende o que diferencia live shopping de uma live comum.
-2. Entra na simulação de uma transmissão com host, espectadores e produto em destaque.
-3. Navega por produtos, reage à live e envia uma pergunta no chat.
-4. Adiciona o produto ao carrinho e abre o checkout demonstrativo.
-5. Consulta a arquitetura mínima, os modelos de operação e um roteiro de validação com usuários reais.
+1. **O problema:** a audiência está na live, mas a conversão está espalhada em outras telas.
+2. **A proposta:** uma loja viva em cima da transmissão, sem interromper a conversa.
+3. **Como funciona:** atrair, demonstrar, engajar e converter em um único fluxo.
+4. **A demo:** a pessoa escolhe um produto, pergunta no chat, reage e adiciona ao carrinho.
+5. **O produto:** três experiências conectadas para marca, audiência e operação.
+6. **Go-to-market:** começar como serviço de estúdio, evoluir para pacotes recorrentes e, depois, plataforma própria.
+7. **Próximo passo:** uma live piloto com três marcas locais e duração de trinta minutos.
 
-## Funcionalidades implementadas
+## Funcionalidades da demo
 
-* Página responsiva com explicação do conceito, princípios, arquitetura e modelos de negócio.
-* Simulação de player de live com estado de produto em destaque.
-* Alternância entre produtos, preços promocionais e contagem regressiva de oferta.
-* Chat local com envio de mensagens e resposta simulada da host.
+* Troca do produto em destaque.
+* Adição de produtos ao carrinho.
+* Carrinho lateral com subtotal, cupom ilustrativo e checkout demonstrativo.
+* Chat local com envio de perguntas e resposta simulada da host.
 * Reações com contador e feedback visual.
-* Carrinho lateral com quantidade, subtotal, cupom ilustrativo e checkout demonstrativo.
-* Aba de roteiro da live para mostrar a operação por trás da experiência.
-* Checklist de validação com estado persistido apenas durante a sessão.
-* Navegação por âncoras, menu móvel, foco visível, textos alternativos sem depender de imagens externas e suporte a `prefers-reduced-motion`.
+* Layout responsivo para desktop e dispositivos móveis.
+* Navegação por âncoras, menu móvel, foco visível e suporte a `prefers-reduced-motion`.
 
 ## Como executar localmente
 
-A página não possui dependências ou etapa de build própria. A partir da raiz do monorepo:
+O projeto usa apenas HTML, CSS e JavaScript vanilla. A partir da raiz do monorepo:
 
 ```bash
 npm run build
 python3 -m http.server 8080 --directory dist
 ```
 
-Depois, acesse:
+Acesse:
 
 ```text
 http://localhost:8080/live-shopping/
 ```
 
-Também é possível abrir `live-shopping/index.html` diretamente, embora um servidor HTTP seja recomendado para reproduzir o ambiente de publicação.
-
 ## Publicação
 
-O projeto está dentro da pasta `live-shopping/` e contém o `index.html` exigido pelo gerador do monorepo. Após a publicação da branch `main` pelo workflow existente, estará disponível em:
+O projeto está em `live-shopping/` e contém o `index.html` exigido pela automação do monorepo. O workflow de GitHub Pages publica a aplicação em:
 
 <https://ronanrodrigo.github.io/lab/live-shopping/>
 
-A central do playground permanece em <https://ronanrodrigo.dev/lab/> e detecta o projeto pelo manifesto gerado automaticamente. `projects.json` não foi alterado manualmente.
+O cartão da página central é gerado a partir de `project.json`. `projects.json` não foi alterado manualmente.
 
 ## Decisões técnicas
 
-* HTML, CSS e JavaScript vanilla: o fluxo é estático e não precisava de framework, dependências ou etapa de compilação adicional.
-* Dados específicos da transmissão ficam em memória no `app.js`; não há API, backend, banco, autenticação ou credenciais.
-* O player é uma composição visual de CSS, não um vídeo externo. Assim, o fluxo continua funcional em ambiente local e no GitHub Pages.
-* O carrinho e o chat demonstram estados de interação, mas não executam pagamento nem criam pedidos reais.
-* Todos os recursos são carregados com caminhos relativos (`./styles.css` e `./app.js`) para funcionar no prefixo `/lab/live-shopping/`.
+* HTML, CSS e JavaScript vanilla, sem dependências externas ou etapa de build própria.
+* O vídeo é uma composição visual de CSS para que o pitch funcione sem serviço externo.
+* Produtos, mensagens, audiência e métricas são simulados em memória.
+* Não há API, backend, autenticação, banco de dados ou credenciais.
+* Os recursos usam caminhos relativos para funcionar em `/lab/live-shopping/`.
+* A interação foi mantida pequena e intencional: ela existe para provar o fluxo do produto, não para simular toda a infraestrutura.
 
-## Dados reais, simulados e limitações
+## Dados e limitações
 
-Os produtos, números de audiência, mensagens, preços e métricas são simulados para tornar o conceito demonstrável. Não foi utilizada API ou fonte externa de dados dentro da aplicação.
+A demo não transmite vídeo real, não sincroniza estoque e não realiza pagamentos. O checkout é apenas um próximo passo visual do pitch. O chat não possui persistência nem moderação de servidor.
 
-Limitações conhecidas:
-
-* Não existe transmissão de vídeo real, encoder, CDN ou baixa latência.
-* O checkout não processa pagamentos e o estoque não é sincronizado.
-* O chat não possui servidor, persistência ou moderação automática.
-* Analytics, integrações com Shopify/VTEX/Nuvemshop, CRM, ERP e gateway de pagamento são apenas representados conceitualmente.
-* A simulação de host e produtos usa ilustrações CSS, sem fotografias reais.
+As informações comerciais do material de briefing — como serviços de estúdio, equipe, integrações possíveis, gateways e modelos de cobrança — foram usadas para estruturar o pitch, não como promessa de disponibilidade da plataforma.
 
 ## Decisões visuais
 
-A interface usa uma base clara e editorial, com roxo como cor de produto, verde-lima para estados de ação e laranja para urgência. O contraste entre a área de explicação e o painel escuro da live ajuda a separar conteúdo educativo de experiência operacional.
+A interface foi reorganizada para leitura de apresentação: cada seção responde a uma pergunta típica de pitch — qual é o problema, qual é a proposta, como funciona, quem se beneficia, como começar e qual é o próximo passo.
 
-Cards, etiquetas curtas e blocos numerados foram usados para tornar a proposta escaneável. A composição do simulador prioriza o desktop, mas reorganiza player, produto e chat em uma coluna no celular. O conteúdo evita depender de imagens e fontes externas para manter o protótipo rápido e confiável.
+O roxo identifica a marca e a camada de produto; o verde-lima marca ação, vida e conversão; o fundo escuro concentra a narrativa da plataforma e da demo. Cards numerados, frases curtas, setas e blocos de fluxo ajudam a apresentar a ideia em poucos minutos.
 
-## Referências pesquisadas e aproveitadas
+## Referências utilizadas
 
-A página <https://ronanrodrigo.dev/notes/tags/> foi acessada antes da implementação. Ela reúne notas sobre ferramentas de IA, automação, agentes e competências. Não havia uma referência diretamente aplicável a live shopping; a prática aproveitada foi a organização do conteúdo por temas e a apresentação progressiva de informação, refletida nas seções curtas, tags e blocos do guia.
+A página <https://ronanrodrigo.dev/notes/tags/> foi acessada antes da implementação. Ela não tinha uma referência diretamente relacionada a live commerce. Foi aproveitada a organização por temas e a apresentação progressiva de informação.
 
-Também foram pesquisadas referências específicas sobre live commerce. As ideias pertinentes incorporadas foram:
+Também foram pesquisadas referências sobre live shopping e experiência de compra:
 
-* Nielsen Norman Group — [How to Create a Successful Livestream-Ecommerce Experience](https://www.nngroup.com/articles/successful-livestream-ecommerce-guidelines/): reduzir o esforço de compra, oferecer recompensas e manter suporte após o pedido.
-* McKinsey — [It's showtime: How live commerce is transforming the shopping experience](https://www.mckinsey.com.br/en/capabilities/mckinsey-digital/our-insights/its-showtime-how-live-commerce-is-transforming-the-shopping-experience): live commerce como combinação de entretenimento, interação e venda.
-* Stream — [Live Commerce Explained](https://getstream.io/blog/live-commerce/): vídeo de baixa latência, chat, reações, produtos marcados e sinais de audiência como partes centrais da experiência.
-* commercetools — [Live commerce engagement best practices](https://commercetools.com/blog/live-commerce-engagement-best-practices): planejamento da live, demonstração, interação, urgência e acompanhamento de métricas.
-* Live.S — [Live.S](https://lives.app.br/): referência brasileira para compra durante a transmissão sem sair da live.
+* [Nielsen Norman Group — How to Create a Successful Livestream-Ecommerce Experience](https://www.nngroup.com/articles/successful-livestream-ecommerce-guidelines/): redução do esforço de compra, recompensas e suporte.
+* [McKinsey — How live commerce is transforming the shopping experience](https://www.mckinsey.com.br/en/capabilities/mckinsey-digital/our-insights/its-showtime-how-live-commerce-is-transforming-the-shopping-experience): combinação de entretenimento, interação e venda.
+* [Stream — Live Commerce Explained](https://getstream.io/blog/live-commerce/): vídeo de baixa latência, chat, reações, produtos marcados e métricas.
+* [commercetools — Live commerce engagement best practices](https://commercetools.com/blog/live-commerce-engagement-best-practices): roteiro, demonstração, interação, urgência e análise.
+* [Live.S](https://lives.app.br/): referência brasileira de compra durante a transmissão.
 
-Os links serviram como referências de produto e UX; não há integração com nenhum deles.
+Nenhuma dessas fontes é integrada ao código.
 
-## Próximos passos para validar com usuários reais
+## Próximos passos
 
-1. Entrevistar três marcas ou lojas de Joinville sobre como hoje organizam lives e recebem pedidos.
-2. Produzir uma live piloto de 30 minutos com um único segmento e observar perguntas, cliques e desistências.
-3. Testar duas versões do checkout: overlay dentro da live e abertura em página externa.
-4. Medir visualização, interação, clique em produto, adição ao carrinho, conclusão e retorno para a próxima live.
-5. Só depois decidir entre operar com ferramentas existentes, contratar uma solução SaaS ou construir integrações próprias.
+1. Apresentar este pitch a três marcas ou lojas de Joinville.
+2. Produzir uma live piloto de trinta minutos com uma categoria específica.
+3. Medir descoberta, perguntas, cliques no produto, adição ao carrinho, conclusão e retorno.
+4. Validar se o valor está na produção como serviço, no software ou na combinação dos dois.
+5. Só depois priorizar integrações reais com e-commerce, pagamentos, estoque e analytics.

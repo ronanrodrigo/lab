@@ -1,6 +1,6 @@
 {
-  "name": "Live shopping",
-  "description": "Guia visual e protótipo navegável para entender uma plataforma de comércio ao vivo.",
-  "tags": ["web", "mvp", "e-commerce", "live commerce"],
+  "name": "LiveFlow — pitch de live shopping",
+  "description": "Pitch visual e demo navegável de uma plataforma que transforma lives em experiências de compra.",
+  "tags": ["web", "mvp", "pitch", "e-commerce", "live commerce"],
   "status": "experimento"
 }
