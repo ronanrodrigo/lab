@@ -45,6 +45,18 @@
     "status": "teste"
   },
   {
+    "slug": "live-shopping",
+    "name": "Live shopping",
+    "description": "Guia visual e protótipo navegável para entender uma plataforma de comércio ao vivo.",
+    "tags": [
+      "web",
+      "mvp",
+      "e-commerce",
+      "live commerce"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "monstergen",
     "name": "monstergen",
     "description": "Gerador de nomes e sabores para imaginar a próxima lata.",
