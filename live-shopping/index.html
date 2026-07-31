@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Um guia visual e protótipo navegável para entender como criar uma plataforma de live shopping." />
+    <title>Live shopping — do estúdio ao checkout</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Live shopping, início">
+        <span class="brand-mark" aria-hidden="true">◉</span>
+        <span>live<span>lab</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#arquitetura">Arquitetura</a>
+        <a class="nav-cta" href="#proximos-passos">Validar ideia <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> guia + protótipo de produto</p>
+          <h1>Transforme audiência em <em>conversa</em> e conversa em compra.</h1>
+          <p class="hero-lede">Live shopping combina vídeo ao vivo, demonstração de produtos e checkout em uma única experiência. Veja o que precisa existir por trás de uma live que vende.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#simulador">Experimentar a live <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#como-funciona">Entender o modelo <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero-note"><span aria-hidden="true">✦</span> Pensado para marcas, varejistas e criadores que querem testar o formato sem começar por uma plataforma complexa.</div>
+        </div>
+        <div class="hero-visual" aria-label="Resumo visual de uma transmissão de live shopping">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="hero-card">
+            <div class="mini-card-top"><span class="live-pill"><i aria-hidden="true"></i> AO VIVO</span><span>12,4 mil assistindo</span></div>
+            <div class="hero-video"><span class="play-badge" aria-hidden="true">▶</span><span class="floating-reaction reaction-a" aria-hidden="true">♥</span><span class="floating-reaction reaction-b" aria-hidden="true">✦</span></div>
+            <div class="hero-product"><span class="product-art product-art-small art-camisa" aria-hidden="true"><b>01</b></span><div><strong>Camisa de linho</strong><small>oferta exclusiva da live</small></div><strong class="price">R$ 129</strong></div>
+          </div>
+          <div class="float-label label-analytics"><span aria-hidden="true">↗</span><strong>+18,6%</strong><small>conversão</small></div>
+          <div class="float-label label-chat"><span aria-hidden="true">✦</span><strong>interação</strong><small>em tempo real</small></div>
+        </div>
+      </section>
+
+      <section class="signal-strip" aria-label="O que torna o live shopping diferente">
+        <div><strong>01</strong><span>Conteúdo que demonstra</span></div>
+        <div><strong>02</strong><span>Comunidade que participa</span></div>
+        <div><strong>03</strong><span>Compra sem perder o momento</span></div>
+      </section>
+
+      <section class="content-section section-shell" id="como-funciona">
+        <div class="section-intro split-intro">
+          <div><p class="eyebrow">a ideia em uma frase</p><h2>Não é só uma live.<br /><span>É uma loja com pulso.</span></h2></div>
+          <div class="intro-copy"><p>Em uma live tradicional, o produto aparece como conteúdo. No live shopping, ele vira uma decisão compartilhada: o apresentador demonstra, a audiência pergunta e o checkout acompanha o interesse.</p><p class="muted">O principal desafio de produto é reduzir a distância entre <strong>“gostei”</strong> e <strong>“comprei”</strong> sem interromper a experiência.</p></div>
+        </div>
+        <div class="principles-grid">
+          <article class="principle-card"><span class="number">01</span><div class="icon-box icon-purple" aria-hidden="true">◉</div><h3>Vídeo que contextualiza</h3><p>O host mostra uso, detalhes e combinações em vez de depender apenas de uma foto no catálogo.</p><span class="card-tag">confiança</span></article>
+          <article class="principle-card featured"><span class="number">02</span><div class="icon-box icon-lime" aria-hidden="true">✦</div><h3>Interação que orienta</h3><p>Chat, reações e perguntas transformam dúvidas em sinais para o host e para a loja.</p><span class="card-tag">comunidade</span></article>
+          <article class="principle-card"><span class="number">03</span><div class="icon-box icon-orange" aria-hidden="true">↗</div><h3>Checkout que não atrapalha</h3><p>O produto destacado e o carrinho aparecem no contexto da live, com o mínimo de passos.</p><span class="card-tag">conversão</span></article>
+        </div>
+      </section>
+
+      <section class="simulator-section" id="simulador">
+        <div class="section-shell">
+          <div class="section-intro simulator-heading"><div><p class="eyebrow eyebrow-light">protótipo navegável</p><h2>Entre na live.<br /><span>Veja o fluxo pelo outro lado.</span></h2></div><p>Esta simulação usa dados locais para mostrar como conteúdo, conversa, catálogo e compra se conectam. Clique, pergunte e adicione um produto.</p></div>
+          <div class="simulator-layout">
+            <div class="live-stage">
+              <div class="stage-toolbar"><div class="host-info"><span class="avatar">M</span><div><strong>Marina apresenta</strong><small>Casa leve · especial Joinville</small></div></div><span class="viewer-count"><i class="live-dot"></i><span id="viewer-count">12.438</span> espectadores</span></div>
+              <div class="fake-video"><div class="video-grid-lines"></div><span class="studio-label">ESTÚDIO 01</span><div class="host-figure" aria-hidden="true"><div class="host-head"></div><div class="host-body"></div></div><div class="video-caption"><span>ao vivo do estúdio</span><strong>Casa leve, rotina mais bonita.</strong></div><div class="video-controls"><button class="round-control" type="button" aria-label="Reproduzir ou pausar">Ⅱ</button><span class="progress-track"><span></span></span><button class="round-control" type="button" aria-label="Ativar som">⌁</button><span>LIVE</span></div><span class="reaction-burst" id="reaction-burst" aria-hidden="true"></span></div>
+              <div class="featured-product" id="featured-product"><div class="featured-label"><span>produto em destaque</span><button class="icon-button" id="next-product" type="button" aria-label="Próximo produto">→</button></div><div class="featured-content"><span class="product-art art-camisa" id="featured-art" aria-hidden="true"><b>01</b></span><div class="featured-details"><strong id="featured-name">Camisa de linho</strong><span id="featured-description">Leve, respirável e feita para acompanhar o dia.</span><div class="product-price"><strong id="featured-price">R$ 129,00</strong><del id="featured-old-price">R$ 169,00</del><span>24% OFF</span></div></div><button class="button button-light" id="add-featured" type="button">Adicionar <span aria-hidden="true">+</span></button></div><div class="stock-line"><span><i></i> últimas 8 unidades</span><span id="offer-timer">oferta termina em 04:58</span></div></div>
+            </div>
+
+            <aside class="live-sidebar" aria-label="Interações da live">
+              <div class="sidebar-tabs"><button class="sidebar-tab active" type="button" data-tab="chat">Chat <span id="chat-count">248</span></button><button class="sidebar-tab" type="button" data-tab="agenda">Roteiro</button></div>
+              <div class="tab-panel active" id="chat-panel"><div class="pinned-message"><span class="pin-icon" aria-hidden="true">⌖</span><div><small>Marina · fixado</small><p>Qual produto você quer ver de perto? Pergunte aqui 👋</p></div></div><div class="chat-list" id="chat-list" aria-live="polite"><div class="chat-message"><span class="chat-avatar avatar-pink">L</span><p><strong>Luiza</strong><span>Essa camisa amassa muito?</span></p></div><div class="chat-message"><span class="chat-avatar avatar-yellow">R</span><p><strong>Rafa</strong><span>Tem cupom para primeira compra?</span></p></div><div class="chat-message host-message"><span class="chat-avatar avatar-purple">M</span><p><strong>Marina <small>host</small></strong><span>Tem sim! Use <b>AO VIVO</b> no checkout.</span></p></div><div class="chat-message"><span class="chat-avatar avatar-blue">B</span><p><strong>Bianca</strong><span>Acabei de adicionar ao carrinho ✨</span></p></div></div><form class="chat-form" id="chat-form"><label class="sr-only" for="chat-input">Escreva uma mensagem</label><input id="chat-input" type="text" maxlength="100" placeholder="Faça uma pergunta..." autocomplete="off" /><button type="submit" aria-label="Enviar mensagem">↑</button></form><div class="reactions"><span>reaja à live</span><button type="button" class="reaction-button" data-reaction="♥">♥</button><button type="button" class="reaction-button" data-reaction="✦">✦</button><button type="button" class="reaction-button" data-reaction="👏">👏</button><span class="reaction-total" id="reaction-total">1.203</span></div></div>
+              <div class="tab-panel" id="agenda-panel"><div class="agenda-title"><span>roteiro da live</span><strong>35 min restantes</strong></div><ol class="run-of-show"><li class="done"><span>01</span><div><strong>Aquecimento</strong><small>Apresentação e cupom</small></div></li><li class="current"><span>02</span><div><strong>Casa leve</strong><small>Demonstração de produtos</small></div></li><li><span>03</span><div><strong>Oferta relâmpago</strong><small>Combo exclusivo</small></div></li><li><span>04</span><div><strong>Encerramento</strong><small>Próxima live</small></div></li></ol><div class="agenda-tip"><span aria-hidden="true">✦</span> O roteiro dá ritmo, mas as perguntas da audiência guiam a conversa.</div></div>
+            </aside>
+          </div>
+          <div class="simulator-footnote"><span>◉</span> Simulação local · nenhuma compra ou transmissão real é realizada <span class="footnote-separator">•</span> <button type="button" id="open-cart-link">Ver carrinho (<span id="cart-count-link">0</span>)</button></div>
+        </div>
+      </section>
+
+      <section class="content-section section-shell" id="arquitetura">
+        <div class="section-intro split-intro"><div><p class="eyebrow">por trás da experiência</p><h2>Comece com o essencial.<br /><span>Evolua com os sinais.</span></h2></div><div class="intro-copy"><p>Uma primeira versão não precisa construir tudo do zero. O MVP deve provar que uma audiência consegue descobrir, confiar e comprar um produto durante uma transmissão.</p><p class="muted">Abaixo, uma arquitetura de referência para orientar a conversa entre negócio, operação e tecnologia.</p></div></div>
+        <div class="architecture-board"><div class="arch-column arch-content"><div class="arch-label">experiência</div><div class="arch-card"><span>01</span><strong>Player interativo</strong><small>vídeo, produto em destaque, replay</small></div><div class="arch-card"><span>02</span><strong>Chat e reações</strong><small>perguntas, moderação, enquete</small></div></div><div class="arch-connector" aria-hidden="true"><span>↕</span><span>↕</span></div><div class="arch-column arch-core"><div class="arch-label">núcleo da plataforma</div><div class="arch-card core-card"><span class="core-orb">◉</span><strong>Orquestração em tempo real</strong><small>eventos, estoque, ofertas e estado da live</small><div class="core-pills"><i>low latency</i><i>events</i><i>moderation</i></div></div></div><div class="arch-connector" aria-hidden="true"><span>↕</span><span>↕</span></div><div class="arch-column arch-business"><div class="arch-label">operação</div><div class="arch-card"><span>01</span><strong>Catálogo + estoque</strong><small>Shopify, VTEX, Nuvemshop</small></div><div class="arch-card"><span>02</span><strong>Checkout + dados</strong><small>PIX, pedidos, analytics</small></div></div></div>
+      </section>
+
+      <section class="dark-section" id="modelo"><div class="section-shell"><div class="section-intro centered-intro"><p class="eyebrow eyebrow-light">como começar pequeno</p><h2>O primeiro produto não é a plataforma inteira.<br /><span>É uma live que funciona.</span></h2><p>Para testar a ideia em Joinville, uma operação enxuta pode combinar estúdio, equipe e ferramentas existentes antes de investir em software proprietário.</p></div><div class="model-grid"><article class="model-card"><span class="model-index">01 · agora</span><h3>Produção como serviço</h3><p>Aluguel de estúdio por turno com transmissão, host opcional e suporte técnico.</p><strong>Receita previsível</strong><div class="model-price">R$ 800 <small>/ 3h de estúdio</small></div></article><article class="model-card model-card-highlight"><span class="model-index">02 · depois</span><h3>Pacote recorrente</h3><p>Calendário de lives para marcas que querem aprender com consistência e audiência própria.</p><strong>Aprendizado contínuo</strong><div class="model-price">1–2 <small>lives / semana</small></div></article><article class="model-card"><span class="model-index">03 · escala</span><h3>Plataforma própria</h3><p>Integrações, checkout contextual e comissão quando houver volume e sinais de repetição.</p><strong>Upside sobre vendas</strong><div class="model-price">5–15% <small>sobre GMV</small></div></article></div></div></section>
+
+      <section class="content-section section-shell" id="proximos-passos"><div class="validation-layout"><div><p class="eyebrow">próximo experimento</p><h2>Valide a conversa<br /><span>antes de validar o código.</span></h2><p class="validation-copy">Convide três marcas locais, produza uma live de 30 minutos e observe onde a audiência demonstra intenção. O melhor próximo passo nasce desses sinais.</p><a class="button button-primary" href="#simulador">Revisitar a simulação <span aria-hidden="true">↗</span></a></div><div class="validation-checklist"><div class="checklist-heading"><strong>roteiro de validação</strong><span>4 perguntas</span></div><label><input type="checkbox" /> <span><b>Descoberta</b> — as pessoas entendem a oferta em poucos segundos?</span></label><label><input type="checkbox" /> <span><b>Interação</b> — quais dúvidas aparecem antes do clique?</span></label><label><input type="checkbox" /> <span><b>Conversão</b> — o checkout interrompe a experiência?</span></label><label><input type="checkbox" /> <span><b>Retorno</b> — elas voltariam para a próxima live?</span></label><div class="checklist-result" id="checklist-result"><span aria-hidden="true">✦</span> Marque as perguntas respondidas durante o teste.</div></div></div></section>
+    </main>
+
+    <footer class="site-footer section-shell"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">◉</span><span>live<span>lab</span></span></a><p>Um experimento sobre o futuro das compras ao vivo.</p><a href="https://ronanrodrigo.dev/lab/" target="_blank" rel="noreferrer">feito no lab ↗</a></footer>
+
+    <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-title" aria-hidden="true"><div class="cart-backdrop" id="cart-backdrop"></div><div class="cart-panel"><div class="cart-header"><div><p class="eyebrow">sua seleção</p><h2 id="cart-title">Carrinho <span id="cart-count">0</span></h2></div><button class="close-button" id="close-cart" type="button" aria-label="Fechar carrinho">×</button></div><div class="cart-items" id="cart-items"><div class="empty-cart"><span aria-hidden="true">＋</span><strong>Seu carrinho está vazio</strong><p>Adicione um produto em destaque para continuar a simulação.</p></div></div><div class="cart-summary"><div><span>Subtotal</span><strong id="cart-total">R$ 0,00</strong></div><div class="coupon-line"><span>cupom <b>AO VIVO</b></span><strong id="coupon-discount">− R$ 0,00</strong></div><button class="button button-primary full-width" id="checkout-button" type="button" disabled>Ir para checkout <span aria-hidden="true">→</span></button><small>Checkout demonstrativo · nenhum pagamento será processado.</small></div></div></aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
