@@ -72,7 +72,7 @@ class PackingRush extends Phaser.Scene {
   drawPlayfield() {
     this.drawPixelBackdrop(0x17203a);
     const g = this.add.graphics();
-    // parede e janelas do aeroporto
+    // airport wall and windows
     g.fillStyle(0x26365d, 1); g.fillRect(0, 70, WIDTH, 8);
     g.fillStyle(0x0e1428, 1); g.fillRect(0, 82, WIDTH, 5);
     g.fillStyle(0x253555, 1); g.fillRect(310, 105, 380, 125);
@@ -80,36 +80,36 @@ class PackingRush extends Phaser.Scene {
     g.lineStyle(3, 0x415a89, 1); g.lineBetween(500, 105, 500, 230); g.lineBetween(310, 168, 690, 168);
     g.fillStyle(0xffd669, 1); g.fillCircle(625, 135, 23);
     g.fillStyle(0xf6e29e, .32); g.fillCircle(625, 135, 38);
-    // chão em padrão de tiles
+    // tiled floor
     g.fillStyle(0x11182d, 1); g.fillRect(0, 412, WIDTH, 228);
     g.lineStyle(2, 0x202d50, 1);
     for (let x = 0; x <= WIDTH; x += 48) g.lineBetween(x, 412, x, HEIGHT);
     for (let y = 450; y <= HEIGHT; y += 38) g.lineBetween(0, y, WIDTH, y);
-    // placa de missão
+    // mission board
     g.fillStyle(0xf3d68b, 1); g.fillRect(35, 102, 226, 142);
     g.fillStyle(0x78523e, 1); g.fillRect(29, 96, 238, 8); g.fillRect(29, 242, 238, 8);
     this.addText('PEDIDO', 53, 125, 13, '#6b4933', true);
     this.addText('MILA', 53, 153, 27, '#272542', true);
     this.addText('PRAIA  /  SOL', 53, 185, 14, '#272542', true);
     this.addText('roupas leves + diversão', 53, 213, 11, '#6b5b52');
-    // cliente à esquerda, atrás do balcão
+    // customer waiting on the other side of the counter
     this.drawCustomer(145, 345);
-    // balão da cliente
+    // customer speech balloon
     g.fillStyle(0xfff7d8, 1); g.fillRect(238, 270, 220, 58); g.fillTriangle(238, 304, 218, 320, 238, 320);
     g.lineStyle(3, 0x7b5c50, 1); g.strokeRect(238, 270, 220, 58);
     this.addText('MINHA MALA, POR FAVOR!', 348, 293, 12, '#392943', true).setOrigin(.5);
     this.addText('Tenho pressa! ✦', 348, 313, 11, '#8e6254').setOrigin(.5);
-    // jogador atrás do balcão
+    // player behind the counter
     this.drawPlayer(500, 490);
-    // balcão foreground
+    // counter foreground
     g.fillStyle(0x754b46, 1); g.fillRect(0, 480, WIDTH, 160);
     g.fillStyle(0xc47b58, 1); g.fillRect(0, 468, WIDTH, 26);
     g.fillStyle(0xf0aa68, 1); g.fillRect(0, 468, WIDTH, 6);
     g.fillStyle(0x4c3040, 1); g.fillRect(0, 500, WIDTH, 6);
     g.fillStyle(0x6b4044, 1); g.fillRect(0, 610, WIDTH, 30);
-    // mala aberta no balcão
+    // open suitcase on the counter
     this.drawSuitcase(490, 390);
-    // prateleira de itens
+    // item shelf
     g.fillStyle(0x202e52, 1); g.fillRect(690, 96, 235, 315);
     g.lineStyle(5, 0x526b9d, 1); g.strokeRect(690, 96, 235, 315);
     g.fillStyle(0xc47b58, 1); g.fillRect(704, 145, 207, 6); g.fillRect(704, 225, 207, 6); g.fillRect(704, 305, 207, 6); g.fillRect(704, 385, 207, 6);
@@ -330,7 +330,7 @@ class PackingRush extends Phaser.Scene {
     const button = this.add.container(x, y).setDepth(5);
     const bg = this.add.rectangle(0, 0, width, height, color, 1).setOrigin(0).setStrokeStyle(5, 0xfff2ad, 1);
     const shadow = this.add.rectangle(8, 8, width, height, 0x8e5b45, 1).setOrigin(0).setDepth(-1);
-    const text = this.addText(width / 2, height / 2, label, 22, textColor, true).setOrigin(.5);
+    const text = this.addText(label, width / 2, height / 2, 22, textColor, true).setOrigin(.5);
     button.add([shadow, bg, text]); button.setSize(width, height); button.setInteractive(new Phaser.Geom.Rectangle(0, 0, width, height), Phaser.Geom.Rectangle.Contains);
     button.on('pointerover', () => bg.setFillStyle(0xffe17b)); button.on('pointerout', () => bg.setFillStyle(color)); button.on('pointerdown', callback);
     return button;
