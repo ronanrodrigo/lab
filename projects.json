@@ -58,6 +58,19 @@
     "status": "experimento"
   },
   {
+    "slug": "maleiro",
+    "name": "Maleiro",
+    "description": "Jogo cozy de montar a mala certa para cada viagem.",
+    "tags": [
+      "jogo",
+      "infantil",
+      "cozy",
+      "phaser",
+      "mvp"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "monstergen",
     "name": "monstergen",
     "description": "Gerador de nomes e sabores para imaginar a próxima lata.",
