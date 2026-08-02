@@ -57,6 +57,18 @@
     "status": "experimento"
   },
   {
+    "slug": "jogo-da-mala-2",
+    "name": "Malinha Mágica",
+    "description": "Jogo infantil de montar malas para diferentes viajantes. Escolha roupas, acessórios e extras adequados ao destino, estação e preferências de cada cliente.",
+    "tags": [
+      "jogo",
+      "infantil",
+      "mobile",
+      "MVP"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "live-shopping",
     "name": "LiveFlow — pitch de live shopping",
     "description": "Pitch visual e demo navegável de uma plataforma que transforma lives em experiências de compra.",
