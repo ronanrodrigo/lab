@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f1e8" />
+    <title>Maleiro — arrume a mala</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="back-link" href="../">← voltar ao lab</a>
+        <div class="brand" aria-label="Maleiro">
+          <span class="brand-mark" aria-hidden="true">🧳</span>
+          <span>maleiro</span>
+        </div>
+        <span class="header-badge">missão 01</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">jogo de organização · protótipo</p>
+          <h1 id="page-title">A mala da Mila está quase pronta.</h1>
+          <p class="intro-copy">Leia o pedido da cliente e escolha só o que combina com a viagem. Arraste os itens ou toque neles para guardar na mala.</p>
+        </div>
+        <div class="progress-note" aria-label="Progresso da missão">
+          <span class="progress-dot active"></span><span class="progress-dot"></span><span class="progress-dot"></span>
+          <small>1 de 3 etapas</small>
+        </div>
+      </section>
+
+      <section class="game-card" aria-label="Jogo Maleiro">
+        <div id="game" role="application" aria-label="Jogo de montar uma mala"></div>
+        <p class="fallback-note">Dica: no computador, arraste. No celular, toque em um item para colocá-lo ou tirá-lo da mala.</p>
+      </section>
+
+      <footer class="site-footer">
+        <span>feito para brincar e testar uma ideia</span>
+        <span>sem cadastro · funciona no navegador</span>
+      </footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>
