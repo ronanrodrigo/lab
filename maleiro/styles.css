@@ -1,87 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600&display=swap');
-
-:root {
-  color-scheme: light;
-  --ink: #2e2b35;
-  --muted: #756f7d;
-  --cream: #f7f1e8;
-  --paper: #fffdf9;
-  --lavender: #ddd2ff;
-  --purple: #6652c8;
-  --coral: #f47f6b;
-  --mint: #bfe9d8;
-  --line: #e8dfd4;
-}
-
 * { box-sizing: border-box; }
 
-body {
-  margin: 0;
+:root { color-scheme: dark; }
+
+html, body {
   min-width: 320px;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
+  min-height: 100%;
+  margin: 0;
+  background: #111a2d;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .42;
-  background-image: radial-gradient(#d8cdbf 0.7px, transparent 0.7px);
-  background-size: 18px 18px;
-}
+body { overflow-x: hidden; }
 
-.page-shell {
+.game-page {
   position: relative;
-  z-index: 1;
-  width: min(1180px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 24px 0 36px;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 20px;
 }
 
-.site-header, .site-footer, .intro, .brand, .progress-note {
-  display: flex;
-  align-items: center;
+#game {
+  width: min(960px, 100%);
+  overflow: hidden;
+  border: 4px solid #0b1221;
+  border-radius: 18px;
+  background: #1d2b45;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .42), 0 0 0 2px #354661;
 }
 
-.site-header { justify-content: space-between; gap: 16px; }
-.back-link { color: var(--muted); text-decoration: none; font-size: .86rem; font-weight: 700; }
-.back-link:hover, .back-link:focus-visible { color: var(--purple); text-decoration: underline; }
-.brand { gap: 9px; font-family: 'Fredoka', sans-serif; font-size: 1.4rem; font-weight: 600; letter-spacing: -.02em; }
-.brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 11px; background: var(--lavender); font-size: 1.2rem; transform: rotate(-7deg); }
-.header-badge { padding: 7px 11px; border: 1px solid #d7ccef; border-radius: 99px; color: var(--purple); background: rgba(255,255,255,.55); font-size: .74rem; font-weight: 700; }
+#game canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  touch-action: none;
+}
 
-.intro { justify-content: space-between; gap: 24px; padding: 44px 0 25px; }
-.eyebrow { margin: 0 0 9px; color: var(--coral); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-h1 { max-width: 680px; margin: 0; font-family: 'Fredoka', sans-serif; font-size: clamp(2rem, 4.7vw, 3.7rem); line-height: .98; letter-spacing: -.04em; }
-.intro-copy { max-width: 650px; margin: 17px 0 0; color: var(--muted); font-size: clamp(.95rem, 1.5vw, 1.08rem); line-height: 1.55; }
-.progress-note { flex-wrap: wrap; justify-content: flex-end; gap: 6px; min-width: 132px; align-self: flex-end; padding-bottom: 6px; }
-.progress-note small { width: 100%; margin-top: 3px; color: var(--muted); font-size: .72rem; text-align: right; }
-.progress-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0d9d0; }
-.progress-dot.active { background: var(--coral); box-shadow: 0 0 0 4px #f9d6ce; }
+.back-link {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 5;
+  color: #b9c8e8;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: .8;
+}
 
-.game-card { overflow: hidden; border: 1px solid rgba(211, 199, 186, .8); border-radius: 28px; background: var(--paper); box-shadow: 0 20px 60px rgba(73, 55, 42, .1); }
-#game { width: 100%; min-height: 420px; }
-#game canvas { display: block; width: 100% !important; height: auto !important; touch-action: none; }
-.fallback-note { margin: 0; padding: 12px 20px 15px; border-top: 1px solid var(--line); color: var(--muted); font-size: .76rem; text-align: center; }
-.site-footer { justify-content: space-between; gap: 16px; padding: 18px 2px 0; color: #928a94; font-size: .72rem; }
+.back-link:hover, .back-link:focus-visible { color: #fff; opacity: 1; }
 
-:focus-visible { outline: 3px solid #f4ae51; outline-offset: 3px; }
+.screen-reader-help {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 @media (max-width: 700px) {
-  .page-shell { width: min(100% - 20px, 560px); padding-top: 15px; }
-  .site-header { gap: 8px; }
-  .brand { font-size: 1.2rem; }
-  .brand-mark { width: 30px; height: 30px; font-size: 1rem; }
-  .intro { display: block; padding: 32px 3px 18px; }
-  .progress-note { justify-content: flex-start; margin-top: 18px; }
-  .progress-note small { width: auto; margin: 0 0 0 4px; text-align: left; }
-  .game-card { border-radius: 20px; }
-  .site-footer { align-items: flex-start; flex-direction: column; gap: 5px; padding-left: 2px; }
+  .game-page { min-height: 100svh; padding: 34px 8px 8px; }
+  #game { border-width: 2px; border-radius: 12px; }
+  .back-link { top: 10px; left: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
