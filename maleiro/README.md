@@ -1,45 +1,51 @@
 # Maleiro
 
-MVP de um jogo 2D casual e cozy em que a pessoa trabalha atrás de um balcão de embarque e prepara a mala de uma cliente que está esperando.
+`Maleiro` agora é um jogo 2D arcade de montagem rápida de malas. A pessoa atende Mila em um balcão de aeroporto, escolhe itens para uma viagem à praia e tenta entregar a mala antes do tempo acabar.
 
-## Objetivo
+## Objetivo do MVP
 
-Validar o loop principal da ideia: entender o pedido da cliente, escolher itens adequados ao destino e ao clima, montar a mala no balcão e entregá-la para receber uma avaliação.
+Validar um loop de jogo simples e repetível:
 
-## Problema
-
-Preparar uma viagem pode ser confuso. O jogo transforma essa decisão em uma tarefa visual e satisfatória, com uma cena de atendimento que deixa claro quem espera e quem está montando a mala.
+1. ler o pedido da cliente;
+2. escolher os itens certos sob pressão de tempo;
+3. colocar os itens na mala;
+4. entregar a mala;
+5. receber pontuação e tentar melhorar.
 
 ## Público-alvo
 
-Crianças, famílias e pessoas que gostam de experiências casuais e cozy no navegador.
+Crianças, famílias e pessoas que gostam de jogos casuais, cozy e arcade no navegador.
 
-## Fluxo principal
+## Como jogar
 
-1. Mila espera do outro lado do balcão com um balão de fala.
-2. A pessoa lê o quadro de pedido: praia, clima quente e roupas leves.
-3. A pessoa toca ou arrasta itens da prateleira de atendimento para a mala aberta no balcão.
-4. A pessoa entrega a mala.
-5. O jogo mostra estrelas, pontos, acertos, erros e uma dica para uma nova tentativa.
+* Na tela inicial, clique em **JOGAR** ou pressione `Enter`/`Espaço`.
+* Use `←` e `→` ou `A` e `D` para selecionar itens na prateleira.
+* Pressione `Espaço` para pegar o item selecionado.
+* Também é possível tocar nos itens ou arrastá-los até a mala.
+* Coloque até cinco itens.
+* Pressione `Enter` ou use o comando indicado no jogo para entregar.
+* Itens adequados dão pontos; itens errados tiram pontos; completar a mala correta dá bônus.
 
-## Funcionalidades implementadas
+No celular, o fluxo principal funciona tocando nos itens e arrastando-os para a mala.
 
-* Cena 2D desenhada em Phaser 3, com ambiente de balcão de embarque.
-* Personagem cliente visível, esperando pela mala.
-* Perspectiva do jogador atrás do balcão, com mãos sobre o balcão.
-* Quadro visual com o briefing da viagem.
-* Mala aberta sobre o balcão.
-* Prateleira de itens com oito itens desenhados como ícones 2D.
-* Seleção por toque/clique e drag-and-drop.
-* Capacidade de cinco itens.
-* Pontuação por itens adequados, bônus pelo livro, penalidade por itens incompatíveis e itens faltantes.
-* Tela de resultado com estrelas, resumo e ações de montar de novo ou fechar.
-* Feedback visual no balcão durante a montagem.
-* Layout responsivo para telas pequenas e grandes usando a escala FIT do Phaser.
+## Gráficos e direção visual
+
+A experiência foi redesenhada como um jogo, não como uma página de apresentação:
+
+* tela inicial com título, botão arcade e mascote-mala;
+* cena contínua em canvas, sem cabeçalho ou cards HTML;
+* estética pixel-art desenhada em blocos e formas simples;
+* cliente animada visualmente esperando no balcão;
+* jogador representado atrás do balcão;
+* janela, piso em tiles, placa de missão, balão de fala, prateleira e mala aberta;
+* efeitos de partículas em acertos;
+* tremor de câmera em erros;
+* cronômetro de 45 segundos;
+* seleção destacada, feedback de acerto/erro e tela de pontuação.
 
 ## Como executar localmente
 
-Requer apenas um servidor HTTP local. Na raiz do monorepo:
+Na raiz do monorepo:
 
 ```bash
 npm run build
@@ -48,10 +54,10 @@ python3 -m http.server 8080 --directory dist
 
 Acesse:
 
-* `http://localhost:8080/` para a central do lab.
-* `http://localhost:8080/maleiro/` para o MVP.
+* `http://localhost:8080/` para a central;
+* `http://localhost:8080/maleiro/` para o jogo.
 
-Durante ajustes rápidos, também é possível servir a pasta do projeto:
+Durante ajustes rápidos:
 
 ```bash
 python3 -m http.server 8080 --directory maleiro
@@ -59,51 +65,43 @@ python3 -m http.server 8080 --directory maleiro
 
 ## GitHub Pages
 
-Depois da publicação, o projeto fica disponível em:
+Após a publicação pelo workflow, o jogo estará disponível em:
 
 `https://ronanrodrigo.github.io/lab/maleiro/`
 
-A pasta contém `index.html`, por isso é detectada automaticamente pelo gerador de projetos do monorepo. `projects.json` não deve ser atualizado manualmente.
+O projeto possui `index.html` e `project.json`. O manifesto central é gerado automaticamente; `projects.json` não deve ser alterado manualmente.
 
 ## Decisões técnicas
 
-* Phaser 3 foi usado conforme o briefing. A cena concentra a experiência em um canvas 2D e usa eventos de ponteiro para mouse e toque.
-* Os gráficos são desenhados com `Phaser.GameObjects.Graphics`, sem sprites externos, para que a cena continue independente de assets e carregue rapidamente.
-* A interface HTML foi reduzida ao contêiner do jogo; briefing, personagem, balcão, itens e resultado vivem dentro da cena para reforçar a sensação de jogo.
-* O projeto não adiciona dependências ao `package.json` nem exige etapa de build própria.
-* Phaser 3 é carregado por CDN no `index.html`; o workflow existente copia os arquivos estáticos sem alterações.
-* Não há backend, autenticação, API ou banco de dados.
+* Phaser 3 continua sendo o único motor utilizado, conforme o briefing.
+* A renderização usa `pixelArt: true`, `antialias: false` e formas de `Graphics`/`Rectangle` para criar gráficos 2D com aparência de jogo arcade.
+* A lógica está concentrada em uma cena com três estados: tela inicial, rodada e resultado.
+* O jogo não depende de sprites, imagens, API, banco, backend, autenticação ou dados externos.
+* Phaser é carregado por CDN no HTML, sem adicionar dependências ou etapa de build ao monorepo.
+* A página HTML contém somente o canvas do jogo e uma descrição oculta para acessibilidade; toda a interface jogável está dentro do canvas.
 
 ## Dados
 
-Os dados são fixos e simulados em `game.js`: uma cliente, uma viagem de praia e oito itens. A quantidade mínima de fallback foi considerada não aplicável porque o MVP não consulta uma fonte externa.
+Os dados são locais e simulados: uma cliente, um destino quente e oito itens. Cinco itens combinam com a viagem e três são distrações. A quantidade mínima de fallback foi considerada não aplicável porque não existe fonte externa.
 
-## Decisões visuais
+## Referências consultadas
 
-* A composição usa uma cena de balcão, com a cliente em primeiro plano ao fundo, a mala no centro e os itens em uma prateleira lateral.
-* Azul-marinho, madeira e amarelo criam uma leitura de balcão de embarque e diferenciam o jogo de uma página de apresentação.
-* Personagem, mãos, mala e objetos são desenhados com formas 2D simples e contornos grossos, adequados ao público infantil e fáceis de substituir por arte final depois.
-* O balão de fala e o quadro de pedido comunicam a missão sem depender de texto fora do jogo.
+A página `https://ronanrodrigo.dev/notes/tags/` foi acessada antes desta atualização. Ela reúne notas sobre ferramentas, agentes, automação e sistemas de design. Foram aplicadas as ideias pertinentes de manter o experimento modular, independente, pequeno e fácil de evoluir.
 
-## Referências e notas consultadas
-
-A página `https://ronanrodrigo.dev/notes/tags/` foi acessada antes da implementação e novamente durante esta atualização. Ela apresenta um índice de notas sobre IA, ferramentas, pesquisa, agentes e sistemas de design. Foram aproveitadas as práticas pertinentes de manter o protótipo pequeno, modular, independente e fácil de evoluir.
-
-As referências do briefing também orientaram o loop de montar mala de *Pack a Bag*, *Pack Master*, *Pakinpaks*, *Trip puzzle* e jogos de organização de lancheiras. Esta versão prioriza a encenação de atendimento no balcão e a ação central de preparar a mala.
+O briefing também citou *Pack a Bag*, *Pack Master*, *Pakinpaks*, *Trip puzzle*, *Tá na Mala!* e jogos de organização de lancheira. Esta versão prioriza a sensação de partida arcade: tela inicial, desafio com tempo, seleção, feedback, erro, acerto, pontuação e replay.
 
 ## Limitações conhecidas
 
-* Existe apenas uma missão, uma cliente e um destino.
-* Ainda não há conserto, pintura, loja, progressão, moedas ou personalização de malas.
-* Os gráficos são formas 2D de protótipo, não ilustrações finais.
-* O Phaser é carregado de uma CDN; sem conexão ou se a CDN estiver indisponível, o jogo não inicia.
-* A pontuação usa regras fixas e serve para validar o fluxo, não para representar um balanceamento final.
-* A acessibilidade do conteúdo dentro do canvas é básica; a página mantém uma descrição textual oculta para tecnologias assistivas.
+* Existe uma única fase, cliente e destino.
+* Os gráficos são pixel-art de protótipo desenhados por código, não assets finais.
+* Ainda não há loja, moedas, conserto, pintura, progressão ou personalização.
+* O Phaser depende de uma CDN; sem conexão, o motor não carrega.
+* O controle por teclado e toque existe, mas a acessibilidade completa de um canvas ainda precisa ser aprofundada.
 
 ## Próximos passos para validação
 
-* Observar crianças e famílias jogando sem explicação e verificar se identificam rapidamente o papel da cliente e o papel de quem atende no balcão.
-* Medir se a composição visual comunica a ação principal antes de a pessoa tocar em um item.
-* Testar se o tamanho dos objetos funciona bem em celular e tablet.
-* Validar se a reação da cliente deve ser animada após a entrega.
-* Criar uma segunda missão, como uma viagem para um destino frio, apenas depois de validar esta cena.
+* Observar se uma criança entende que precisa jogar, e não apenas ler a tela.
+* Medir se 45 segundos geram diversão ou pressa excessiva.
+* Testar o tamanho e a legibilidade dos itens em celular.
+* Verificar se partículas, tremor e pontuação tornam os acertos satisfatórios.
+* Adicionar uma segunda fase fria somente depois de validar o loop arcade da praia.

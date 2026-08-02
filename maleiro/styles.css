@@ -1,54 +1,38 @@
 * { box-sizing: border-box; }
 
-:root { color-scheme: dark; }
-
 html, body {
   min-width: 320px;
   min-height: 100%;
   margin: 0;
-  background: #111a2d;
-  font-family: Arial, Helvetica, sans-serif;
+  background: #090d1a;
+  font-family: monospace;
 }
 
 body { overflow-x: hidden; }
 
-.game-page {
-  position: relative;
+.arcade-page {
   display: grid;
   min-height: 100vh;
   place-items: center;
-  padding: 20px;
+  padding: 12px;
+  background: radial-gradient(circle at 50% 25%, #1d2946 0, #090d1a 65%);
 }
 
 #game {
   width: min(960px, 100%);
   overflow: hidden;
-  border: 4px solid #0b1221;
-  border-radius: 18px;
-  background: #1d2b45;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .42), 0 0 0 2px #354661;
+  border: 5px solid #303c63;
+  background: #0e1428;
+  box-shadow: 0 0 0 3px #070a13, 0 24px 80px rgba(0, 0, 0, .65);
 }
 
 #game canvas {
   display: block;
   width: 100% !important;
   height: auto !important;
+  image-rendering: pixelated;
   touch-action: none;
 }
-
-.back-link {
-  position: fixed;
-  top: 12px;
-  left: 16px;
-  z-index: 5;
-  color: #b9c8e8;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  opacity: .8;
-}
-
-.back-link:hover, .back-link:focus-visible { color: #fff; opacity: 1; }
 
 .screen-reader-help {
   position: absolute;
@@ -63,9 +47,8 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 700px) {
-  .game-page { min-height: 100svh; padding: 34px 8px 8px; }
-  #game { border-width: 2px; border-radius: 12px; }
-  .back-link { top: 10px; left: 10px; }
+  .arcade-page { min-height: 100svh; padding: 6px; }
+  #game { border-width: 3px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
