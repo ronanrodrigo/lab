@@ -82,6 +82,19 @@
     "status": "experimento"
   },
   {
+    "slug": "live-shopping-ai",
+    "name": "Live Shopping com IA",
+    "description": "12 ideias de como usar inteligência artificial em uma plataforma de live shopping para aumentar conversão e experiência do cliente",
+    "tags": [
+      "IA",
+      "e-commerce",
+      "agentes",
+      "recomendação",
+      "NLP"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "monstergen",
     "name": "monstergen",
     "description": "Gerador de nomes e sabores para imaginar a próxima lata.",
