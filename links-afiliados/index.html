@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links Afiliados — Curadoria de Produtos</title>
+  <meta name="description" content="Curadoria de produtos com links de afiliados. Encontre as melhores ofertas em tecnologia, cursos e mais.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ronanrodrigo.github.io/lab/links-afiliados/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Links Afiliados — Curadoria de Produtos">
+  <meta property="og:description" content="Curadoria de produtos com links de afiliados.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ronanrodrigo.github.io/lab/links-afiliados/">
+  <meta property="og:image" content="images/og-image.svg">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Links Afiliados — Curadoria de Produtos">
+  <meta name="twitter:description" content="Curadoria de produtos com links de afiliados.">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Links Afiliados",
+    "url": "https://ronanrodrigo.github.io/lab/links-afiliados/",
+    "description": "Curadoria de produtos com links de afiliados",
+    "inLanguage": "pt-BR"
+  }
+  </script>
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Links Afiliados",
+    "url": "https://ronanrodrigo.github.io/lab/links-afiliados/"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>🔗 Links Afiliados</h1>
+      <input type="search" id="search" placeholder="Buscar produtos..." aria-label="Buscar produtos">
+      <select id="category-filter" aria-label="Filtrar por categoria">
+        <option value="">Todas categorias</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <div id="loading" class="loading">
+      <p>Carregando produtos...</p>
+    </div>
+    <div id="products-grid" role="list" aria-label="Lista de produtos" hidden></div>
+    <div id="empty-state" hidden>
+      <p>Nenhum produto encontrado.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>⚠️ Este site contém links de afiliados. Podemos receber uma comissão por compras realizadas através destes links, sem custo adicional para você.</p>
+    <p>© 2026 Links Afiliados. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Analytics: Microsoft Clarity (heatmaps + session replay, free) -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","CLARITY_PROJECT_ID");
+  </script>
+  <!-- Analytics: Plausible (privacy-friendly, cookieless) — replace with your domain -->
+  <script defer data-domain="ronanrodrigo.github.io" src="https://plausible.io/js/script.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>

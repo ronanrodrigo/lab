@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f1117"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="#1a1d2e" stroke="#3b82f6" stroke-width="2"/>
+  <text x="600" y="280" font-family="sans-serif" font-size="64" fill="#e4e6eb" text-anchor="middle" font-weight="bold">🔗 Links Afiliados</text>
+  <text x="600" y="350" font-family="sans-serif" font-size="28" fill="#9ca3af" text-anchor="middle">Curadoria de produtos com links de afiliados</text>
+</svg>

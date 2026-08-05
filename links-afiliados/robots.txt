@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ronanrodrigo.github.io/lab/links-afiliados/sitemap.xml
