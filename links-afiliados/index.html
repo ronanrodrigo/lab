@@ -21,6 +21,11 @@
   <meta name="twitter:title" content="Links Afiliados — Curadoria de Produtos">
   <meta name="twitter:description" content="Curadoria de produtos com links de afiliados.">
 
+  <!-- Fonts: Plus Jakarta Sans (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 
   <!-- JSON-LD: WebSite -->
@@ -45,29 +50,73 @@
   </script>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>🔗 Links Afiliados</h1>
-      <input type="search" id="search" placeholder="Buscar produtos..." aria-label="Buscar produtos">
-      <select id="category-filter" aria-label="Filtrar por categoria">
-        <option value="">Todas categorias</option>
-      </select>
+  <!-- ===== Gradient mesh hero ===== -->
+  <section class="hero" aria-label="Apresentação">
+    <div class="hero__mesh" aria-hidden="true"></div>
+    <div class="hero__content">
+      <span class="eyebrow">Curadoria · 2026</span>
+      <h1 class="hero__title">As melhores ofertas,<br>selecionadas à mão.</h1>
+      <p class="hero__subtitle">Tecnologia, cursos e ferramentas que vale a pena ter — com preços honestos e links de afiliados transparentes.</p>
+
+      <div class="hero__search">
+        <svg class="hero__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2.5 9a6.5 6.5 0 1 1 11.74 3.82l3.47 3.47a.75.75 0 1 1-1.06 1.06l-3.47-3.47A6.5 6.5 0 0 1 2.5 9Z" fill="currentColor"/>
+        </svg>
+        <input type="search" id="search" placeholder="Buscar produtos..." aria-label="Buscar produtos">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Floating glass nav pill ===== -->
+  <header class="nav-wrapper">
+    <nav class="nav-pill" aria-label="Navegação e filtros">
+      <a href="#" class="nav-pill__brand" aria-label="Links Afiliados — início">
+        <span class="nav-pill__logo" aria-hidden="true">◈</span>
+        <span class="nav-pill__name">Links Afiliados</span>
+      </a>
+      <div class="nav-pill__divider" aria-hidden="true"></div>
+      <label class="nav-pill__field">
+        <span class="visually-hidden">Filtrar por categoria</span>
+        <select id="category-filter" aria-label="Filtrar por categoria">
+          <option value="">Todas categorias</option>
+        </select>
+        <svg class="nav-pill__chevron" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 6.5 8 10l4-3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </label>
     </nav>
   </header>
 
+  <!-- ===== Product grid ===== -->
   <main>
     <div id="loading" class="loading">
+      <span class="loading__dot"></span>
+      <span class="loading__dot"></span>
+      <span class="loading__dot"></span>
       <p>Carregando produtos...</p>
     </div>
     <div id="products-grid" role="list" aria-label="Lista de produtos" hidden></div>
     <div id="empty-state" hidden>
-      <p>Nenhum produto encontrado.</p>
+      <div class="empty-state">
+        <div class="empty-state__icon" aria-hidden="true">∅</div>
+        <p>Nenhum produto encontrado.</p>
+        <p class="empty-state__hint">Tente outro termo ou categoria.</p>
+      </div>
     </div>
   </main>
 
-  <footer>
-    <p>⚠️ Este site contém links de afiliados. Podemos receber uma comissão por compras realizadas através destes links, sem custo adicional para você.</p>
-    <p>© 2026 Links Afiliados. Todos os direitos reservados.</p>
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo" aria-hidden="true">◈</span>
+        <span>Links Afiliados</span>
+      </div>
+      <p class="footer__disclosure">
+        ⚠️ Este site contém links de afiliados. Podemos receber uma comissão por compras realizadas através destes links, sem custo adicional para você. Isso ajuda a manter a curadoria independente.
+      </p>
+      <p class="footer__copy">© 2026 Links Afiliados. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
   <!-- Analytics: Microsoft Clarity (heatmaps + session replay, free) -->
