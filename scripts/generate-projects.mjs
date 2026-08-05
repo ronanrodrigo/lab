@@ -2,7 +2,8 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
-const root = resolve(new URL('..', import.meta.url).pathname);
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('..', import.meta.url));
 const outputArgument = process.argv.find((argument) => argument.startsWith('--output='));
 const output = outputArgument ? resolve(root, outputArgument.slice('--output='.length)) : join(root, 'projects.json');
 const excluded = new Set(['.git', '.github', 'node_modules', 'scripts', 'templates', 'dist']);

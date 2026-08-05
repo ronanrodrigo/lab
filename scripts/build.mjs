@@ -5,7 +5,8 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
 const run = promisify(execFile);
-const root = resolve(new URL('..', import.meta.url).pathname);
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
 const excluded = new Set(['.git', '.github', 'node_modules', 'scripts', 'templates', 'dist']);
 
