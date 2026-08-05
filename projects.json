@@ -69,6 +69,17 @@
     "status": "experimento"
   },
   {
+    "slug": "links-afiliados",
+    "name": "Links Afiliados",
+    "description": "Curadoria de produtos com links de afiliados.",
+    "tags": [
+      "afiliados",
+      "produtos",
+      "curadoria"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "live-shopping",
     "name": "LiveFlow — pitch de live shopping",
     "description": "Pitch visual e demo navegável de uma plataforma que transforma lives em experiências de compra.",
