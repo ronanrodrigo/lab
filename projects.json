@@ -106,6 +106,19 @@
     "status": "experimento"
   },
   {
+    "slug": "maplay",
+    "name": "Maplay",
+    "description": "Escolha um local real e dirija por uma estrada pixel art inspirada no mapa aberto.",
+    "tags": [
+      "web",
+      "mvp",
+      "jogo",
+      "mapa",
+      "openstreetmap"
+    ],
+    "status": "experimento"
+  },
+  {
     "slug": "monstergen",
     "name": "monstergen",
     "description": "Gerador de nomes e sabores para imaginar a próxima lata.",
