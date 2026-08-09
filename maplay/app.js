@@ -29,6 +29,7 @@ let speed = 0;
 let distance = 0;
 let score = 0;
 let carOffset = 0;
+let roadProgress = 0;
 let worldSeed = 1;
 
 function hash(value) {
@@ -177,7 +178,7 @@ function drawScene() {
   const horizon = 232;
   const roadTop = 76;
   const roadBottom = 830;
-  const roadShift = Math.sin(distance * 0.004 + worldSeed) * 22;
+  const roadShift = Math.sin(roadProgress * 2 + worldSeed) * 22;
   context.clearRect(0, 0, width, height);
 
   const sky = context.createLinearGradient(0, 0, 0, horizon + 30);
@@ -189,8 +190,8 @@ function drawScene() {
   context.fillRect(760, 54, 34, 34);
   context.fillStyle = '#fbe7a5';
   context.fillRect(752, 62, 50, 18);
-  drawMountain([190, 148, 171, 137, 160, 183, 154, 176, 196], '#82a6a0', distance * 0.03 % 120);
-  drawMountain([205, 164, 192, 151, 188, 175, 165, 179, 214], '#648a84', distance * 0.06 % 120);
+  drawMountain([190, 148, 171, 137, 160, 183, 154, 176, 196], '#82a6a0', roadProgress * 85 % 120);
+  drawMountain([205, 164, 192, 151, 188, 175, 165, 179, 214], '#648a84', roadProgress * 135 % 120);
   context.fillStyle = '#8ebf69';
   context.fillRect(0, horizon, width, height - horizon);
   context.fillStyle = '#b9d77c';
@@ -208,7 +209,7 @@ function drawScene() {
   context.fillRect(0, horizon, width, 5);
 
   for (let i = 0; i < 18; i += 1) {
-    const depth = (i / 18 + distance * 0.0008) % 1;
+    const depth = (i / 18 + roadProgress) % 1;
     const y = horizon + Math.pow(depth, 1.75) * (height - horizon);
     const roadWidth = roadTop + depth * (roadBottom - roadTop);
     const center = width / 2 + roadShift * depth;
@@ -253,7 +254,8 @@ function gameFrame(timestamp) {
   const steering = (controls.left ? -1 : 0) + (controls.right ? 1 : 0);
   carOffset += steering * (0.65 + speed / 180) * delta;
   carOffset = Math.max(-0.86, Math.min(0.86, carOffset));
-  distance += speed * delta * 0.13;
+  distance += speed * delta / 3.6;
+  roadProgress = (roadProgress + speed * delta * 0.0045) % 1;
   score = distance * 10 + speed * 0.2;
   updateHud();
   drawScene();
@@ -266,6 +268,7 @@ function resetGame() {
   distance = 0;
   score = 0;
   carOffset = 0;
+  roadProgress = 0;
   lastFrame = performance.now();
   updateHud();
   drawScene();

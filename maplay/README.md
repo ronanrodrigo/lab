@@ -26,6 +26,7 @@ O MVP explora uma forma mais lúdica de navegar por lugares conhecidos ou descob
 * Botões dedicados para **acelerar** e **frear**, além de botões para virar à esquerda e à direita.
 * Controles equivalentes por teclado: `W`/`↑`, `S`/`↓`, `A`/`D` e setas.
 * Distância, velocidade e pontuação atualizadas durante a corrida.
+* Movimento visual calibrado com a velocidade: a distância usa conversão de km/h para m/s e os marcadores, montanhas e árvores avançam de forma proporcional ao deslocamento.
 * Layout responsivo para desktop e celular, com alvos de toque grandes e foco visível.
 
 ## Dados reais, simulados e decisões técnicas
