@@ -1,0 +1,85 @@
+:root {
+  --ink: #10251f;
+  --muted: #66746e;
+  --paper: #f7f5ed;
+  --line: #d9ded3;
+  --lime: #d7f36b;
+  --green: #123d2f;
+  --grass: #94bc6a;
+  --road: #6b6e67;
+  --road-light: #85877c;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); }
+button, input { font: inherit; }
+button { cursor: pointer; }
+.app-shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+.hero { min-height: 680px; padding: 56px 0 80px; display: flex; flex-direction: column; justify-content: center; }
+.brand-row, .game-header, .input-row, .game-actions, .game-hud, .controls-copy p { display: flex; align-items: center; }
+.brand-row { gap: 12px; margin-bottom: 70px; }
+.brand-mark { width: 36px; height: 36px; display: grid; place-items: center; background: var(--lime); border: 2px solid var(--ink); font-weight: 900; transform: rotate(-5deg); }
+.eyebrow { color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .16em; }
+h1, h2, p { margin-top: 0; }
+h1 { max-width: 700px; margin-bottom: 24px; font-size: clamp(48px, 8vw, 96px); line-height: .91; letter-spacing: -.07em; }
+h1 span { color: #89a64e; }
+.intro { max-width: 440px; margin-bottom: 48px; color: var(--muted); font-size: 18px; line-height: 1.55; }
+.location-form { max-width: 680px; }
+.location-form label { display: block; margin-bottom: 10px; font-size: 13px; font-weight: 800; }
+.input-row { gap: 10px; }
+input { width: 100%; min-height: 58px; padding: 0 18px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 3px; outline: 0; }
+input:focus { border-color: var(--green); box-shadow: 0 0 0 3px #d7f36b88; }
+.primary-button, .ghost-button, .icon-button { min-height: 58px; border: 0; border-radius: 3px; font-weight: 800; }
+.primary-button { min-width: 130px; padding: 0 20px; color: var(--paper); background: var(--green); }
+.primary-button:hover { background: #1d5944; }
+.form-hint { display: flex; gap: 8px; align-items: center; margin-top: 14px; color: var(--muted); font-size: 12px; }
+.status-dot { width: 7px; height: 7px; background: #8cb64e; border-radius: 50%; }
+.game-section { padding: 30px 0 100px; }
+.is-hidden { display: none !important; }
+.game-header { justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+h2 { margin: 6px 0 7px; font-size: clamp(30px, 5vw, 48px); letter-spacing: -.06em; }
+#route-description { margin-bottom: 0; color: var(--muted); }
+.game-actions { gap: 8px; }
+.ghost-button { min-height: 42px; padding: 0 14px; color: var(--ink); background: transparent; border: 1px solid var(--line); }
+.icon-button { width: 42px; min-height: 42px; color: var(--ink); background: var(--lime); font-size: 22px; }
+.game-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 18px; }
+.canvas-wrap { position: relative; overflow: hidden; min-height: 420px; background: #9cc875; border: 1px solid #b6c9a2; box-shadow: 10px 10px 0 #e2e7d9; }
+canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.canvas-message { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; color: var(--ink); background: #d7f36bcc; font-weight: 800; text-align: center; }
+.game-hud { position: absolute; top: 16px; left: 16px; right: 16px; justify-content: space-between; color: #fff; font-size: 13px; text-shadow: 1px 1px #123d2f; }
+.game-hud span { padding: 7px 10px; background: #123d2fcc; }
+.touch-controls { position: absolute; right: 16px; bottom: 16px; display: none; gap: 8px; }
+.touch-controls button { width: 48px; height: 48px; color: var(--ink); background: #d7f36bdd; border: 2px solid var(--ink); font-size: 22px; font-weight: 900; }
+.route-card { background: #fff; border: 1px solid var(--line); }
+.route-map { position: relative; height: 170px; overflow: hidden; background: #a7ce7e; }
+.map-grid { position: absolute; inset: 0; opacity: .3; background-image: linear-gradient(45deg, transparent 48%, #739a5d 49%, #739a5d 51%, transparent 52%), linear-gradient(-30deg, transparent 48%, #739a5d 49%, #739a5d 51%, transparent 52%); background-size: 52px 52px; }
+.map-road { position: absolute; background: #85877c; box-shadow: 0 0 0 5px #b9d78f; transform: rotate(28deg); }
+.road-a { width: 310px; height: 21px; top: 55px; left: -35px; }
+.road-b { width: 250px; height: 15px; top: 113px; right: -30px; transform: rotate(-30deg); }
+.road-c { width: 15px; height: 180px; top: -10px; left: 155px; transform: rotate(25deg); }
+.map-pin { position: absolute; top: 71px; left: 55%; color: var(--green); font-size: 30px; transform: rotate(45deg); }
+.route-card-body, .controls-copy { padding: 20px; }
+.route-card-body { display: grid; gap: 7px; border-bottom: 1px solid var(--line); }
+.route-card-body strong { font-size: 19px; }
+.muted { color: var(--muted); font-size: 12px; line-height: 1.5; }
+.controls-copy p { gap: 5px; flex-wrap: wrap; margin: 12px 0 0; font-size: 12px; }
+kbd { padding: 3px 6px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 2px; font-size: 11px; }
+footer { display: flex; justify-content: space-between; gap: 20px; width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 20px 0 30px; color: var(--muted); border-top: 1px solid var(--line); font-size: 11px; letter-spacing: .04em; }
+footer span:first-child { color: var(--ink); font-weight: 900; }
+@media (max-width: 780px) {
+  .app-shell { width: min(100% - 28px, 620px); }
+  .hero { min-height: auto; padding: 28px 0 60px; }
+  .brand-row { margin-bottom: 80px; }
+  .input-row { align-items: stretch; flex-direction: column; }
+  .primary-button { width: 100%; }
+  .game-section { padding-top: 10px; }
+  .game-header { align-items: flex-start; flex-direction: column; }
+  .game-actions { width: 100%; }
+  .ghost-button { flex: 1; }
+  .game-layout { grid-template-columns: 1fr; }
+  .canvas-wrap { min-height: 300px; }
+  .touch-controls { display: flex; }
+  footer { width: min(100% - 28px, 620px); align-items: flex-start; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }

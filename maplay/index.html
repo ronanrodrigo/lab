@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maplay — dirija por qualquer lugar</title>
+  <meta name="description" content="Escolha uma cidade e explore uma estrada pixel art inspirada no mapa real.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">M</div>
+        <span class="eyebrow">MAPLAY / LOCATION DRIVE</span>
+      </div>
+      <h1 id="page-title">Escolha um lugar.<br><span>Vá dirigir.</span></h1>
+      <p class="intro">Uma volta arcade pela textura da sua cidade. Escolha um destino e deixe o mapa virar estrada.</p>
+
+      <form id="location-form" class="location-form">
+        <label for="location-input">Onde você quer dirigir?</label>
+        <div class="input-row">
+          <input id="location-input" name="location" type="text" autocomplete="off" placeholder="Ex.: Joinville, Brasil" value="Joinville, Brasil">
+          <button type="submit" class="primary-button">Partir <span aria-hidden="true">↗</span></button>
+        </div>
+        <p class="form-hint"><span class="status-dot" aria-hidden="true"></span> Mapa real, visual arcade. Sem prédios, sem distrações.</p>
+      </form>
+    </section>
+
+    <section id="game-section" class="game-section is-hidden" aria-labelledby="game-title">
+      <div class="game-header">
+        <div>
+          <span class="eyebrow">ROTA ATIVA</span>
+          <h2 id="game-title">Rua principal</h2>
+          <p id="route-description">Carregando a paisagem...</p>
+        </div>
+        <div class="game-actions">
+          <button id="new-location" class="ghost-button" type="button">Trocar local</button>
+          <button id="restart-game" class="icon-button" type="button" aria-label="Recomeçar partida">↻</button>
+        </div>
+      </div>
+
+      <div class="game-layout">
+        <div class="canvas-wrap">
+          <canvas id="game-canvas" width="960" height="600" aria-label="Jogo de direção em uma estrada pixel art"></canvas>
+          <div id="loading-state" class="canvas-message" role="status">Lendo a rota...</div>
+          <div id="error-state" class="canvas-message is-hidden" role="alert">Não foi possível carregar esse local. Tentamos uma rota simulada para você continuar.</div>
+          <div class="game-hud" aria-live="polite">
+            <span><strong id="distance-value">0</strong> m</span>
+            <span><strong id="score-value">0</strong> pts</span>
+          </div>
+          <div class="touch-controls" aria-label="Controles de direção">
+            <button type="button" data-control="left" aria-label="Virar para a esquerda">←</button>
+            <button type="button" data-control="brake" aria-label="Frear">●</button>
+            <button type="button" data-control="right" aria-label="Virar para a direita">→</button>
+          </div>
+        </div>
+
+        <aside class="route-card">
+          <div class="route-map" aria-hidden="true">
+            <div class="map-grid"></div>
+            <div class="map-road road-a"></div>
+            <div class="map-road road-b"></div>
+            <div class="map-road road-c"></div>
+            <div class="map-pin">◆</div>
+          </div>
+          <div class="route-card-body">
+            <span class="eyebrow">SEU PONTO DE PARTIDA</span>
+            <strong id="location-label">Joinville, Brasil</strong>
+            <span class="muted">Estrada gerada a partir do mapa aberto</span>
+          </div>
+          <div class="controls-copy">
+            <span class="eyebrow">COMO JOGAR</span>
+            <p><kbd>A</kbd><kbd>D</kbd> ou <kbd>←</kbd><kbd>→</kbd> para dirigir</p>
+            <p class="muted">Desvie dos cones e fique no asfalto.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer><span>MAPLAY</span><span>Dados de mapa: OpenStreetMap · Protótipo experimental</span></footer>
+  <script src="./app.js"></script>
+</body>
+</html>
