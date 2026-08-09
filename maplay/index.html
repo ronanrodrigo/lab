@@ -3,82 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maplay — dirija por qualquer lugar</title>
-  <meta name="description" content="Escolha uma cidade e explore uma estrada pixel art inspirada no mapa real.">
+  <title>Maplay — escolha uma rua e dirija</title>
+  <meta name="description" content="Escolha um ponto real no mapa e dirija por uma estrada arcade em pixel art.">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3qS6b8nD8bQ4p6LkO1qZ8sT5u9R8=" crossorigin="">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <main class="app-shell">
-    <section class="hero" aria-labelledby="page-title">
-      <div class="brand-row">
-        <div class="brand-mark" aria-hidden="true">M</div>
-        <span class="eyebrow">MAPLAY / LOCATION DRIVE</span>
-      </div>
-      <h1 id="page-title">Escolha um lugar.<br><span>Vá dirigir.</span></h1>
-      <p class="intro">Uma volta arcade pela textura da sua cidade. Escolha um destino e deixe o mapa virar estrada.</p>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Maplay início"><span class="brand-mark">M</span><span>MAPLAY</span></a>
+      <span class="eyebrow">LOCATION DRIVE / 02D</span>
+    </header>
 
-      <form id="location-form" class="location-form">
-        <label for="location-input">Onde você quer dirigir?</label>
-        <div class="input-row">
-          <input id="location-input" name="location" type="text" autocomplete="off" placeholder="Ex.: Joinville, Brasil" value="Joinville, Brasil">
-          <button type="submit" class="primary-button">Partir <span aria-hidden="true">↗</span></button>
+    <section class="intro-section" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <span class="eyebrow">ESCOLHA SEU PONTO DE PARTIDA</span>
+        <h1 id="page-title">Toda rua pode virar uma <em>corrida.</em></h1>
+        <p>Solte um pin no mapa real, escolha uma direção e acelere. O cenário é arcade; o ponto de partida é do mundo real.</p>
+      </div>
+
+      <form id="search-form" class="search-panel">
+        <label for="location-input">Buscar cidade ou endereço</label>
+        <div class="search-row">
+          <input id="location-input" name="location" type="search" autocomplete="off" placeholder="Ex.: Joinville, Brasil" value="Joinville, Brasil">
+          <button class="button button-dark" type="submit">Buscar</button>
         </div>
-        <p class="form-hint"><span class="status-dot" aria-hidden="true"></span> Mapa real, visual arcade. Sem prédios, sem distrações.</p>
+        <p id="map-status" class="status-line" role="status">Clique no mapa para soltar o pin.</p>
       </form>
+    </section>
+
+    <section class="map-picker" aria-labelledby="map-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">MAPA AO VIVO</span>
+          <h2 id="map-title">Onde começa a corrida?</h2>
+        </div>
+        <span id="coordinates" class="coordinate-badge">Nenhum ponto selecionado</span>
+      </div>
+      <div id="map" class="map" aria-label="Mapa real do OpenStreetMap para escolher o ponto de partida"></div>
+      <div class="map-footer">
+        <p><span class="pin-dot" aria-hidden="true"></span><span id="selected-place">Escolha qualquer ponto da rua no mapa.</span></p>
+        <button id="start-drive" class="button button-accent" type="button" disabled>Começar a dirigir <span aria-hidden="true">→</span></button>
+      </div>
     </section>
 
     <section id="game-section" class="game-section is-hidden" aria-labelledby="game-title">
       <div class="game-header">
         <div>
-          <span class="eyebrow">ROTA ATIVA</span>
-          <h2 id="game-title">Rua principal</h2>
-          <p id="route-description">Carregando a paisagem...</p>
+          <span class="eyebrow">CORRIDA ATIVA</span>
+          <h2 id="game-title">Sua rua, seu ritmo.</h2>
+          <p id="route-description">O local escolhido agora é o ponto de partida.</p>
         </div>
         <div class="game-actions">
-          <button id="new-location" class="ghost-button" type="button">Trocar local</button>
-          <button id="restart-game" class="icon-button" type="button" aria-label="Recomeçar partida">↻</button>
+          <button id="new-location" class="button button-light" type="button">Trocar ponto</button>
+          <button id="restart-game" class="button button-accent square-button" type="button" aria-label="Recomeçar corrida">↻</button>
         </div>
       </div>
 
       <div class="game-layout">
         <div class="canvas-wrap">
-          <canvas id="game-canvas" width="960" height="600" aria-label="Jogo de direção em uma estrada pixel art"></canvas>
-          <div id="loading-state" class="canvas-message" role="status">Lendo a rota...</div>
-          <div id="error-state" class="canvas-message is-hidden" role="alert">Não foi possível carregar esse local. Tentamos uma rota simulada para você continuar.</div>
+          <canvas id="game-canvas" width="960" height="540" aria-label="Estrada em pixel art com carro controlável"></canvas>
           <div class="game-hud" aria-live="polite">
-            <span><strong id="distance-value">0</strong> m</span>
-            <span><strong id="score-value">0</strong> pts</span>
+            <div><span class="hud-label">DISTÂNCIA</span><strong><span id="distance-value">0</span> m</strong></div>
+            <div><span class="hud-label">VELOCIDADE</span><strong><span id="speed-value">0</span> km/h</strong></div>
+            <div><span class="hud-label">PONTOS</span><strong id="score-value">0</strong></div>
           </div>
-          <div class="touch-controls" aria-label="Controles de direção">
-            <button type="button" data-control="left" aria-label="Virar para a esquerda">←</button>
-            <button type="button" data-control="brake" aria-label="Frear">●</button>
-            <button type="button" data-control="right" aria-label="Virar para a direita">→</button>
-          </div>
+          <div id="game-message" class="game-message" role="status">Aperte acelerar para sair do lugar.</div>
         </div>
 
-        <aside class="route-card">
-          <div class="route-map" aria-hidden="true">
-            <div class="map-grid"></div>
-            <div class="map-road road-a"></div>
-            <div class="map-road road-b"></div>
-            <div class="map-road road-c"></div>
-            <div class="map-pin">◆</div>
+        <aside class="control-panel" aria-label="Controles da corrida">
+          <div class="control-intro">
+            <span class="eyebrow">CONTROLES</span>
+            <p>Segure os botões para controlar o carro. Também funciona com teclado.</p>
           </div>
-          <div class="route-card-body">
-            <span class="eyebrow">SEU PONTO DE PARTIDA</span>
-            <strong id="location-label">Joinville, Brasil</strong>
-            <span class="muted">Estrada gerada a partir do mapa aberto</span>
+          <div class="drive-controls">
+            <button class="control-button control-steer" type="button" data-control="left" aria-label="Virar para a esquerda">←</button>
+            <button class="control-button control-brake" type="button" data-control="brake" aria-label="Frear o carro"><span>■</span><small>FREIO</small></button>
+            <button class="control-button control-steer" type="button" data-control="right" aria-label="Virar para a direita">→</button>
+            <button class="control-button control-accelerate" type="button" data-control="accelerate" aria-label="Acelerar o carro"><span>▲</span><small>ACELERAR</small></button>
           </div>
-          <div class="controls-copy">
-            <span class="eyebrow">COMO JOGAR</span>
-            <p><kbd>A</kbd><kbd>D</kbd> ou <kbd>←</kbd><kbd>→</kbd> para dirigir</p>
-            <p class="muted">Desvie dos cones e fique no asfalto.</p>
+          <div class="keyboard-help"><kbd>W</kbd><kbd>↑</kbd> acelera <span>·</span> <kbd>S</kbd><kbd>↓</kbd> freia<br><kbd>A</kbd><kbd>D</kbd> vira</div>
+          <div class="selected-card">
+            <span class="eyebrow">PONTO DE PARTIDA</span>
+            <strong id="location-label">—</strong>
+            <span id="location-coordinates" class="muted">—</span>
           </div>
         </aside>
       </div>
     </section>
   </main>
-  <footer><span>MAPLAY</span><span>Dados de mapa: OpenStreetMap · Protótipo experimental</span></footer>
+
+  <footer><span>MAPLAY</span><span>Mapa: © OpenStreetMap contributors · Protótipo experimental</span></footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="./app.js"></script>
 </body>
 </html>
