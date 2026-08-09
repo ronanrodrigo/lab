@@ -2,36 +2,39 @@
 
 ## Objetivo do MVP
 
-Maplay valida a ideia de transformar um local real escolhido pela pessoa em uma pequena experiência de direção arcade no navegador. A interface comunica a proposta em poucos segundos: digitar um destino, partir e dirigir pela estrada gerada.
+Maplay transforma um ponto real escolhido pela pessoa em uma experiência de direção arcade no navegador. A pessoa visualiza o mapa real, solta um pin e começa uma corrida 2D em terceira pessoa por uma estrada em pixel art.
 
 ## Problema e público-alvo
 
-O MVP explora uma forma mais lúdica de navegar por lugares conhecidos ou descobrir destinos. O público ainda está **indefinido** no briefing; portanto, a primeira versão prioriza uma interação imediata, sem cadastro e sem explicações longas.
+O MVP explora uma forma mais lúdica de navegar por lugares conhecidos ou descobrir destinos. O público ainda está **indefinido** no briefing; por isso, a experiência não exige cadastro, instalação ou explicações longas.
 
 ## Fluxo principal
 
-1. A pessoa informa uma cidade, bairro ou lugar.
-2. Seleciona **Partir**.
-3. O Maplay apresenta uma paisagem de estrada em terceira pessoa, com asfalto central e grama nas laterais.
-4. A pessoa dirige usando `A`/`D`, as setas do teclado ou os botões de toque.
-5. Pode reiniciar a volta ou trocar o local.
+1. A pessoa acessa o Maplay e vê um mapa real do OpenStreetMap.
+2. Busca uma cidade/endereço ou clica diretamente em qualquer ponto do mapa para soltar o pin.
+3. Seleciona **Começar a dirigir**.
+4. Controla o carro em uma estrada arcade: acelera, freia e vira.
+5. Pode reiniciar a corrida ou escolher outro ponto.
 
 ## Funcionalidades implementadas
 
-* Campo de local com exemplo preenchido.
-* Tela de partida com feedback de carregamento.
-* Cena 2D em canvas com câmera em terceira pessoa, estrada, grama, vegetação simples e carro pixel art.
-* Movimento lateral por teclado e controles de toque em telas pequenas.
-* Distância percorrida e pontuação atualizadas durante a partida.
-* Semente visual derivada do nome do local para que destinos diferentes produzam variações de paisagem.
-* Cartão de rota com representação visual abstrata do mapa.
-* Layout responsivo, foco visível, textos semânticos e suporte básico a teclado.
+* Mapa interativo real com tiles do OpenStreetMap e atribuição visível.
+* Seleção de ponto por clique no mapa com marcador e coordenadas.
+* Busca de cidade/endereço usando o Nominatim do OpenStreetMap, acionada somente pelo formulário.
+* Estado de busca, ponto selecionado e erro de localização.
+* Cena 2D em canvas com câmera em terceira pessoa, estrada em perspectiva, montanhas, árvores, iluminação, carro desenhado em pixel art e cenário em movimento.
+* Botões dedicados para **acelerar** e **frear**, além de botões para virar à esquerda e à direita.
+* Controles equivalentes por teclado: `W`/`↑`, `S`/`↓`, `A`/`D` e setas.
+* Distância, velocidade e pontuação atualizadas durante a corrida.
+* Layout responsivo para desktop e celular, com alvos de toque grandes e foco visível.
 
 ## Dados reais, simulados e decisões técnicas
 
-A referência de fonte de dados foi **OpenStreetMap**, mas esta versão não faz uma chamada externa: o nome digitado funciona como entrada e a estrada é uma visualização simulada. Isso mantém o fluxo principal disponível offline, evita credenciais e reduz o escopo necessário para validar a diversão da interação. O projeto usa apenas HTML, CSS e JavaScript vanilla; não há dependências, build próprio, backend ou autenticação.
+O mapa exibido e o geocodificador usam serviços públicos do OpenStreetMap. Leaflet é carregado por CDN para renderizar o mapa interativo sem adicionar uma etapa de build. Os tiles usam a URL oficial `https://tile.openstreetmap.org/{z}/{x}/{y}.png` e exibem a atribuição obrigatória.
 
-A direção é desenhada em `canvas` para permitir uma cena leve e responsiva. O mapa lateral é uma composição visual abstrata, sem reproduzir tiles ou dados cartográficos. O projeto não renderiza prédios, conforme solicitado.
+A geometria da corrida ainda é simulada em canvas: o ponto real define o local escolhido e a semente visual do cenário, mas a pista não representa a geometria exata da rua. Essa separação mantém a interação principal leve e disponível sem backend. O jogo não renderiza prédios, tráfego ou outros elementos 3D.
+
+A busca do Nominatim possui fallback operacional: se a consulta falhar, a pessoa pode escolher o ponto diretamente no mapa. Se os serviços de mapa estiverem indisponíveis, o jogo não recebe novos tiles; a interface informa o estado e preserva o código da corrida já carregado.
 
 ## Como executar localmente
 
@@ -47,24 +50,28 @@ Abra:
 * `http://localhost:8080/` para a central.
 * `http://localhost:8080/maplay/` para o MVP.
 
+É necessário acesso à internet para carregar Leaflet, tiles do OpenStreetMap e a busca do Nominatim.
+
 ## GitHub Pages
 
 Após o merge na branch de deploy e a execução do workflow, o projeto estará em:
 
 `https://ronanrodrigo.github.io/lab/maplay/`
 
-A listagem da central é atualizada automaticamente pelo processo existente a partir da presença de `index.html` e do `project.json`.
+A listagem da central é atualizada automaticamente pelo processo existente a partir da presença de `index.html` e `project.json`.
 
 ## Notas, referências e limitações
 
-A página `https://ronanrodrigo.dev/notes/tags/` foi acessada conforme solicitado. Foram aproveitados princípios pertinentes de escopo reduzido, publicação estática, interface clara, uso de HTML/CSS/JavaScript vanilla e estados de carregamento. A referência visual informada foi o jogo do site `hop.earth`, usada como inspiração para a relação entre lugar e exploração, sem copiar sua implementação.
+A página `https://ronanrodrigo.dev/notes/tags/` foi acessada conforme solicitado. Foram aproveitados princípios pertinentes de escopo reduzido, interface clara, publicação estática e uso de tecnologias simples. A referência visual informada foi o jogo do site `hop.earth`, usada como inspiração para escolher um local real e transformar a exploração em direção, sem copiar sua implementação.
 
-O OpenStreetMap foi registrado como referência de dados, mas não é consultado nesta primeira iteração. Consequentemente, a estrada ainda não representa a geometria real de uma via, não existe geocodificação, não há colisão com limites, obstáculos, tráfego ou destino. O botão e o cartão de mapa são deliberadamente demonstrativos para testar o conceito principal.
+A implementação usa Leaflet, OpenStreetMap e Nominatim sem credenciais. O uso dos serviços públicos está sujeito às políticas de tiles e de geocodificação; não há pré-carregamento em massa nem download de tiles. Para uma versão pública com maior volume, deve-se contratar ou hospedar um provedor de tiles/geocodificação adequado.
+
+Ainda não existe roteamento real, colisão com a rua, elevação, obstáculos, tráfego, multiplayer ou destino de corrida. O carro dirige em uma pista arcade simulada para validar primeiro a combinação mapa real + direção.
 
 ## Próximos passos de validação
 
-* Entrevistar pessoas e observar se escolher um local real torna a experiência mais interessante que uma pista genérica.
-* Adicionar geocodificação sem chave, quando apropriado, e obter dados de vias do OpenStreetMap/Overpass com fallback local.
-* Testar se a representação abstrata da rua é suficiente ou se as pessoas esperam reconhecer a geometria do local.
-* Medir escolha de destinos, duração da partida, reinícios e retorno ao fluxo de troca de local.
-* Explorar objetivos simples, como entregar algo, encontrar um ponto ou completar uma rota.
+* Observar se as pessoas entendem imediatamente que precisam clicar no mapa para posicionar o pin.
+* Testar se reconhecer o ponto real aumenta a vontade de dirigir e compartilhar uma corrida.
+* Integrar geometria de vias do OpenStreetMap/Overpass com simplificação e cache apropriados.
+* Adicionar objetivos curtos, como alcançar um segundo pin ou completar uma distância.
+* Medir escolha de locais, tempo até iniciar a corrida, uso dos botões e duração da partida.
