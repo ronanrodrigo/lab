@@ -2,4 +2,4 @@
 
 - [x] [Build the interactive prompt-to-generator flow](plan-skillffolder.md#implementation)
 - [x] [Verify build, responsive behavior, keyboard flow, and paths](plan-skillffolder.md#verification)
-- [ ] [Commit, push, open PR, and await checks](plan-skillffolder.md#delivery)
+- [x] [Commit, push, open PR, and await checks](plan-skillffolder.md#delivery)

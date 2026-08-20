@@ -33,4 +33,12 @@ The MVP and its design QA are complete locally. `npm run build` includes the
 project in the generated manifest; browser verification confirmed the main flow,
 hub listing, narrow layout and clean console. The repository had no pull-request
 check (Pages deploy triggers only on `main`), so a minimal read-only build check
-was added without changing the deployment workflow. Its PR result remains.
+was added without changing the deployment workflow.
+
+## Delivery evidence
+
+- MVP commit: `1cbae2c` (`feat: add Skillffolder MVP`).
+- Pull-request build check commit: `1dbf4db` (`ci: validate pull request builds`).
+- Draft PR: https://github.com/ronanrodrigo/lab/pull/15
+- First pull-request build: https://github.com/ronanrodrigo/lab/actions/runs/32326314694
+  completed successfully.
