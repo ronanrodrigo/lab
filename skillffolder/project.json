@@ -1,0 +1,6 @@
+{
+  "name": "Skillffolder",
+  "description": "Demonstração interativa de geração de código guiada por arquitetura.",
+  "tags": ["arquitetura", "typescript", "ferramentas"],
+  "status": "experimento"
+}

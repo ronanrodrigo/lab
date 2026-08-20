@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Uma demonstração interativa da skill architecture-guided-development." />
+    <title>Skillffolder — geradores guiados por arquitetura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workbench">Pular para a demonstração</a>
+    <header class="site-header">
+      <a class="brand" href="../" aria-label="Voltar para a central Lab">lab / skillffolder</a>
+      <span class="header-note">mvp estático para devs</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">architecture-guided-development</p>
+        <h1 id="page-title">Do pedido à<br /><em>estrutura padronizada.</em></h1>
+        <p class="lede">Skillffolder transforma e executa sua intenção no comando certo e previsível.</p>
+      </section>
+
+      <section class="workbench" id="workbench" aria-label="Exemplo de geração guiada">
+        <div class="studio">
+          <div class="studio-heading">
+            <div>
+              <p class="panel-label">exemplo de prompt</p>
+              <h2>Um pedido que a skill consegue transformar</h2>
+            </div>
+            <span class="live-mark"><i></i> exemplo de execução</span>
+          </div>
+
+          <section class="prompt-example" aria-label="Prompt de exemplo">
+            <p class="prompt-label">Prompt enviado à skill</p>
+            <p><code>@skillfolder</code> Crie um recurso de catálogo com <code>id</code>, <code>title</code> e <code>price</code>.</p>
+          </section>
+
+          <div class="command-block">
+            <div class="command-topline"><span>script executado</span><span>generate-boilerplate.ts</span></div>
+            <code>npx tsx scripts/generate-boilerplate.ts resource catalog id:string title:string price:number</code>
+          </div>
+
+          <section class="under-the-hood" aria-label="O que acontece por baixo dos panos">
+            <p class="panel-label">por baixo dos panos</p>
+            <ol>
+              <li><b>Interpreta propriedades</b><span>Valida os nomes e tipos declarados no prompt.</span></li>
+              <li><b>Escolhe os templates</b><span>Combina entidade, gateway, serviço, adaptadores e testes.</span></li>
+              <li><b>Protege o repositório</b><span>Interrompe a execução se um arquivo existente seria sobrescrito.</span></li>
+            </ol>
+          </section>
+        </div>
+
+        <section class="output" aria-label="Exemplo de output gerado">
+          <div class="result-state">
+            <div class="result-summary"><strong>Catalog preparado</strong><span>12 arquivos · contratos explícitos · testes determinísticos</span></div>
+            <ul class="file-list" aria-label="Exemplo de arquivos gerados">
+              <li><span>src/domain/catalog.ts</span><small>entidade</small></li>
+              <li><span>src/domain/catalog.test.ts</span><small>regra</small></li>
+              <li><span>src/application/gateways/catalog-gateway.ts</span><small>contrato</small></li>
+              <li><span>src/application/services/create-catalog-service.ts</span><small>caso de uso</small></li>
+              <li><span>src/infrastructure/sample/in-memory-catalog-gateway.ts</span><small>amostra</small></li>
+              <li><span>src/interface-adapters/http/catalog-controller.ts</span><small>entrada</small></li>
+            </ul>
+            <div class="guardrails">
+              <p><b>✓</b> dependências seguem para dentro</p>
+              <p><b>✓</b> adaptador de exemplo sem I/O</p>
+              <p><b>✓</b> cobertura exigida no CI</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+    </main>
+  </body>
+</html>
