@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Uma demonstração interativa da skill architecture-guided-development." />
+    <title>Skillffolder — geradores guiados por arquitetura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workbench">Pular para a demonstração</a>
+    <header class="site-header">
+      <a class="brand" href="../" aria-label="Voltar para a central Lab">lab / skillffolder</a>
+      <span class="header-note">mvp estático para devs</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">architecture-guided-development</p>
+        <h1 id="page-title">Do pedido à estrutura,<br /><em>sem pular o desenho.</em></h1>
+        <p class="lede">Escreva um pedido. A Skillffolder transforma sua intenção no comando certo e mostra a estrutura de código que o gerador vai criar.</p>
+      </section>
+
+      <section class="workbench" id="workbench" aria-label="Demonstração do gerador">
+        <aside class="toolbox" aria-label="Recursos da skill">
+          <p class="panel-label">o que a skill oferece</p>
+          <button class="tool is-selected" type="button" data-tool="resource" aria-pressed="true">
+            <span>01</span><strong>Gerar recurso</strong><small>Entidade, gateway, serviço e testes.</small>
+          </button>
+          <button class="tool" type="button" data-tool="workflow" aria-pressed="false">
+            <span>02</span><strong>Gerar CI</strong><small>Lint, tipos, testes e cobertura.</small>
+          </button>
+          <button class="tool" type="button" data-tool="guide" aria-pressed="false">
+            <span>03</span><strong>Guiar arquitetura</strong><small>Camadas, contratos e validação.</small>
+          </button>
+          <p class="toolbox-footnote">O MVP demonstra o fluxo com dados simulados; nenhum arquivo é escrito no seu computador.</p>
+        </aside>
+
+        <div class="studio">
+          <div class="studio-heading">
+            <div>
+              <p class="panel-label">exemplo de pedido</p>
+              <h2>Crie um recurso para catálogo</h2>
+            </div>
+            <span class="live-mark"><i></i> pronto para gerar</span>
+          </div>
+
+          <form id="generator-form" class="request-form">
+            <label class="prompt-label" for="request">Pedido para a skill</label>
+            <textarea id="request" name="request" rows="3">Crie um recurso de catálogo com id, título e preço. Quero camadas bem definidas e testes determinísticos.</textarea>
+            <div class="field-grid">
+              <label>Recurso
+                <input id="resource" name="resource" value="catalog" autocomplete="off" />
+              </label>
+              <label>Propriedades
+                <input id="properties" name="properties" value="id:string title:string price:number" autocomplete="off" />
+              </label>
+            </div>
+            <p class="hint">A entrada altera o comando e a prévia. Use nomes de código em inglês.</p>
+          </form>
+
+          <div class="command-block" aria-live="polite">
+            <div class="command-topline"><span>comando derivado</span><button id="copy-command" type="button">Copiar</button></div>
+            <code id="command">npx tsx scripts/generate-boilerplate.ts resource catalog id:string title:string price:number</code>
+          </div>
+
+          <div class="run-row">
+            <button id="run-generator" class="run-button" type="submit" form="generator-form">Gerar estrutura <span aria-hidden="true">→</span></button>
+            <p id="run-message" class="run-message" role="status">A simulação preserva os arquivos existentes.</p>
+          </div>
+        </div>
+
+        <section class="output" aria-labelledby="output-title">
+          <div class="output-heading">
+            <div><p class="panel-label">resultado esperado</p><h2 id="output-title">A estrutura aparece aqui</h2></div>
+            <span id="output-state" class="state-pill">aguardando</span>
+          </div>
+          <div id="empty-state" class="empty-state">
+            <p>Execute o comando para ver os arquivos, as fronteiras e a cobertura que a skill propõe.</p>
+          </div>
+          <div id="loading-state" class="loading-state" hidden><span></span> Preparando o recurso e seus testes…</div>
+          <div id="result-state" class="result-state" hidden>
+            <div class="result-summary"><strong id="result-title">Catalog criado</strong><span>12 arquivos · contratos explícitos · testes determinísticos</span></div>
+            <ul id="file-list" class="file-list" aria-label="Arquivos que seriam gerados"></ul>
+            <div class="guardrails">
+              <p><b>✓</b> dependências seguem para dentro</p>
+              <p><b>✓</b> adaptador de exemplo sem I/O</p>
+              <p><b>✓</b> cobertura exigida no CI</p>
+            </div>
+          </div>
+          <div id="error-state" class="error-state" hidden>Use um nome de recurso em minúsculas, com letras, números ou hífens.</div>
+        </section>
+      </section>
+
+      <section class="principles" aria-label="O que o gerador respeita">
+        <p class="eyebrow">o que não fica implícito</p>
+        <div><h2>Um gerador não substitui<br />a arquitetura. Ele a torna visível.</h2><p>A Skillffolder apresenta a intenção, o comando e o resultado lado a lado para que você revise a decisão antes de criar código.</p></div>
+      </section>
+    </main>
+    <footer>Skillffolder · protótipo para validar um fluxo de geração guiada</footer>
+    <script src="./app.js"></script>
+  </body>
+</html>
