@@ -31,4 +31,6 @@ The isolated worktree is at
 `/Users/ronan/Developer/worktrees/lab-skillffolder` on `codex/skillffolder`.
 The MVP and its design QA are complete locally. `npm run build` includes the
 project in the generated manifest; browser verification confirmed the main flow,
-hub listing, narrow layout and clean console. Git delivery remains.
+hub listing, narrow layout and clean console. The repository had no pull-request
+check (Pages deploy triggers only on `main`), so a minimal read-only build check
+was added without changing the deployment workflow. Its PR result remains.
