@@ -25,7 +25,7 @@ e não escrever código de fato.
 O visual toma como referência uma interface editorial clara: papel leve, regras
 azuis, tipografia com serifa para a tese e monoespaçada para comandos. A
 composição foi recriada para destacar prompt, comando e resultado em um único
-workbench, em vez de copiar a estrutura da imagem de referência.
+workbench full-width, em vez de copiar a estrutura da imagem de referência.
 
 O tema é automático: usa o modo claro ou escuro definido pelo sistema
 operacional, sem controle manual nem preferência persistida.
