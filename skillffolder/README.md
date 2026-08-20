@@ -7,21 +7,20 @@ geração e numa estrutura de código revisável.
 ## Objetivo e público
 
 O experimento ajuda desenvolvedores a entenderem o que os scripts da skill fazem
-antes de executá-los. O fluxo central é editar um pedido, conferir o comando
-derivado, executar uma simulação e inspecionar os arquivos que seriam gerados.
+antes de executá-los. O fluxo central apresenta um pedido, o comando derivado e
+um exemplo dos arquivos que o script geraria.
 
 ## Funcionalidades
 
-- Campos editáveis que atualizam o comando de `generate-boilerplate.ts`.
-- Simulação acessível de carregamento, erro de validação e sucesso.
-- Lista de arquivos representando entidade, gateway, serviço, adaptador e testes.
-- Botão para copiar o comando e navegação por teclado.
+- Exemplo de prompt e do comando de `generate-boilerplate.ts` que ele produz.
+- Output preenchido com arquivos de entidade, gateway, serviço, adaptador e testes.
+- Explicação do que acontece por baixo dos panos: interpretação, templates e proteção contra sobrescrita.
 
 ## Decisões técnicas e visuais
 
-O projeto usa HTML, CSS e JavaScript vanilla, sem API, backend, banco de dados ou
-credenciais. Os resultados são dados simulados em memória, pois o objetivo é
-validar a explicação do fluxo e não escrever código de fato.
+O projeto usa HTML e CSS vanilla, sem API, backend, banco de dados ou
+credenciais. O output é um exemplo estático, pois o objetivo é explicar o fluxo
+e não escrever código de fato.
 
 O visual toma como referência uma interface editorial clara: papel leve, regras
 azuis, tipografia com serifa para a tese e monoespaçada para comandos. A

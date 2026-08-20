@@ -39,14 +39,14 @@ No actionable P0, P1 or P2 mismatches. The changed information architecture is
 intentional and directly satisfies the request to show a prompt and the code
 generation script rather than reproduce the supplied construction.
 
-## Interaction and responsive evidence
+## Static example evidence
 
-- Desktop: the resource field was changed to `invoice`; submitting the form
-  displayed `Invoice preparado` and six generated-file rows.
-- Narrow viewport: direct interaction produced `Catalog preparado`; no
-  horizontal overflow was detected.
-- Keyboard: the skip link is visible and the primary button is a native submit
-  control with visible focus styles.
+- Desktop: the static composition shows the prompt, the exact boilerplate
+  command, three internal steps and the `Catalog preparado` example output.
+- The side navigation and the generation action were intentionally removed so
+  the page explains one focused example instead of simulating a product flow.
+- Narrow viewport: no horizontal overflow was detected.
+- Keyboard: the skip link remains visible; no interactive controls are present.
 - Console: no error-level messages appeared in either the direct MVP page or
   the monorepo hub.
 

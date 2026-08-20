@@ -42,3 +42,9 @@ was added without changing the deployment workflow.
 - Draft PR: https://github.com/ronanrodrigo/lab/pull/15
 - First pull-request build: https://github.com/ronanrodrigo/lab/actions/runs/32326314694
   completed successfully.
+
+## Follow-up refinement
+
+The interactive generation button and the lateral resource buttons were removed
+at the user's request. The MVP is now a focused static example: prompt, script
+invocation, internal generator steps and representative output.

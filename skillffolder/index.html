@@ -24,74 +24,57 @@
         <p class="lede">Escreva um pedido. A Skillffolder transforma sua intenção no comando certo e mostra a estrutura de código que o gerador vai criar.</p>
       </section>
 
-      <section class="workbench" id="workbench" aria-label="Demonstração do gerador">
-        <aside class="toolbox" aria-label="Recursos da skill">
-          <p class="panel-label">o que a skill oferece</p>
-          <button class="tool is-selected" type="button" data-tool="resource" aria-pressed="true">
-            <span>01</span><strong>Gerar recurso</strong><small>Entidade, gateway, serviço e testes.</small>
-          </button>
-          <button class="tool" type="button" data-tool="workflow" aria-pressed="false">
-            <span>02</span><strong>Gerar CI</strong><small>Lint, tipos, testes e cobertura.</small>
-          </button>
-          <button class="tool" type="button" data-tool="guide" aria-pressed="false">
-            <span>03</span><strong>Guiar arquitetura</strong><small>Camadas, contratos e validação.</small>
-          </button>
-          <p class="toolbox-footnote">O MVP demonstra o fluxo com dados simulados; nenhum arquivo é escrito no seu computador.</p>
-        </aside>
-
+      <section class="workbench" id="workbench" aria-label="Exemplo de geração guiada">
         <div class="studio">
           <div class="studio-heading">
             <div>
-              <p class="panel-label">exemplo de pedido</p>
-              <h2>Crie um recurso para catálogo</h2>
+              <p class="panel-label">exemplo de prompt</p>
+              <h2>Um pedido que a skill consegue transformar</h2>
             </div>
-            <span class="live-mark"><i></i> pronto para gerar</span>
+            <span class="live-mark"><i></i> exemplo de execução</span>
           </div>
 
-          <form id="generator-form" class="request-form">
-            <label class="prompt-label" for="request">Pedido para a skill</label>
-            <textarea id="request" name="request" rows="3">Crie um recurso de catálogo com id, título e preço. Quero camadas bem definidas e testes determinísticos.</textarea>
-            <div class="field-grid">
-              <label>Recurso
-                <input id="resource" name="resource" value="catalog" autocomplete="off" />
-              </label>
-              <label>Propriedades
-                <input id="properties" name="properties" value="id:string title:string price:number" autocomplete="off" />
-              </label>
-            </div>
-            <p class="hint">A entrada altera o comando e a prévia. Use nomes de código em inglês.</p>
-          </form>
+          <section class="prompt-example" aria-label="Prompt de exemplo">
+            <p class="prompt-label">Prompt enviado à skill</p>
+            <p>“Crie um recurso de catálogo com <code>id</code>, <code>title</code> e <code>price</code>. Quero camadas bem definidas e testes determinísticos.”</p>
+          </section>
 
-          <div class="command-block" aria-live="polite">
-            <div class="command-topline"><span>comando derivado</span><button id="copy-command" type="button">Copiar</button></div>
-            <code id="command">npx tsx scripts/generate-boilerplate.ts resource catalog id:string title:string price:number</code>
+          <div class="command-block">
+            <div class="command-topline"><span>script executado</span><span>generate-boilerplate.ts</span></div>
+            <code>npx tsx scripts/generate-boilerplate.ts resource catalog id:string title:string price:number</code>
           </div>
 
-          <div class="run-row">
-            <button id="run-generator" class="run-button" type="submit" form="generator-form">Gerar estrutura <span aria-hidden="true">→</span></button>
-            <p id="run-message" class="run-message" role="status">A simulação preserva os arquivos existentes.</p>
-          </div>
+          <section class="under-the-hood" aria-label="O que acontece por baixo dos panos">
+            <p class="panel-label">por baixo dos panos</p>
+            <ol>
+              <li><b>Interpreta propriedades</b><span>Valida os nomes e tipos declarados no prompt.</span></li>
+              <li><b>Escolhe os templates</b><span>Combina entidade, gateway, serviço, adaptadores e testes.</span></li>
+              <li><b>Protege o repositório</b><span>Interrompe a execução se um arquivo existente seria sobrescrito.</span></li>
+            </ol>
+          </section>
         </div>
 
         <section class="output" aria-labelledby="output-title">
           <div class="output-heading">
             <div><p class="panel-label">resultado esperado</p><h2 id="output-title">A estrutura aparece aqui</h2></div>
-            <span id="output-state" class="state-pill">aguardando</span>
+            <span class="state-pill is-ready">output</span>
           </div>
-          <div id="empty-state" class="empty-state">
-            <p>Execute o comando para ver os arquivos, as fronteiras e a cobertura que a skill propõe.</p>
-          </div>
-          <div id="loading-state" class="loading-state" hidden><span></span> Preparando o recurso e seus testes…</div>
-          <div id="result-state" class="result-state" hidden>
-            <div class="result-summary"><strong id="result-title">Catalog criado</strong><span>12 arquivos · contratos explícitos · testes determinísticos</span></div>
-            <ul id="file-list" class="file-list" aria-label="Arquivos que seriam gerados"></ul>
+          <div class="result-state">
+            <div class="result-summary"><strong>Catalog preparado</strong><span>12 arquivos · contratos explícitos · testes determinísticos</span></div>
+            <ul class="file-list" aria-label="Exemplo de arquivos gerados">
+              <li><span>src/domain/catalog.ts</span><small>entidade</small></li>
+              <li><span>src/domain/catalog.test.ts</span><small>regra</small></li>
+              <li><span>src/application/gateways/catalog-gateway.ts</span><small>contrato</small></li>
+              <li><span>src/application/services/create-catalog-service.ts</span><small>caso de uso</small></li>
+              <li><span>src/infrastructure/sample/in-memory-catalog-gateway.ts</span><small>amostra</small></li>
+              <li><span>src/interface-adapters/http/catalog-controller.ts</span><small>entrada</small></li>
+            </ul>
             <div class="guardrails">
               <p><b>✓</b> dependências seguem para dentro</p>
               <p><b>✓</b> adaptador de exemplo sem I/O</p>
               <p><b>✓</b> cobertura exigida no CI</p>
             </div>
           </div>
-          <div id="error-state" class="error-state" hidden>Use um nome de recurso em minúsculas, com letras, números ou hífens.</div>
         </section>
       </section>
 
@@ -101,6 +84,5 @@
       </section>
     </main>
     <footer>Skillffolder · protótipo para validar um fluxo de geração guiada</footer>
-    <script src="./app.js"></script>
   </body>
 </html>
