@@ -12,7 +12,7 @@ um exemplo dos arquivos que o script geraria.
 
 ## Funcionalidades
 
-- Exemplo de prompt e do comando de `generate-boilerplate.ts` que ele produz.
+- Exemplo de invocação `@skillfolder`, do comando de `generate-boilerplate.ts` e do output que ele produz.
 - Output preenchido com arquivos de entidade, gateway, serviço, adaptador e testes.
 - Explicação do que acontece por baixo dos panos: interpretação, templates e proteção contra sobrescrita.
 
@@ -26,6 +26,9 @@ O visual toma como referência uma interface editorial clara: papel leve, regras
 azuis, tipografia com serifa para a tese e monoespaçada para comandos. A
 composição foi recriada para destacar prompt, comando e resultado em um único
 workbench, em vez de copiar a estrutura da imagem de referência.
+
+O tema é automático: usa o modo claro ou escuro definido pelo sistema
+operacional, sem controle manual nem preferência persistida.
 
 As notas em `https://ronanrodrigo.dev/notes/tags/` foram acessadas. Foram
 aproveitadas as práticas de ferramentas de IA, geração estruturada e validação
